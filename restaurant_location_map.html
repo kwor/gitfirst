@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/sign_in_up.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	$(document.body).css({
+      	 	"overflow-x":"hidden",
+      	 	"overflow-y":"hidden"
+      	 });
+    </script>
+</head>
+<script language="JavaScript">
+window.onload=function(){
+	function GetQueryString(name)
+	{
+		var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r!=null)return  unescape(r[2]); return null;
+	}
+	// 调用方法
+	var location=GetQueryString("location");
+	$('#app_name_div span').text(location);
+}
+</script>
+ <style>
+       #map {
+        height: 450px;
+        width: 100%;
+       }
+    </style>
+<body>
+	<div id="main" class="sign_content mui-scroll-wrapper">
+		<!--  Top Templete  Start -->
+ 		
+   <header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;">Meet with Restaurant</h1>
+    </header>
+		
+		
+		
+		<!--  Top Templete  End -->
+<div id="show_map_navi">
+	
+			  <div id="map"></div>
+			  
+
+		</div>
+		
+		
+	</div>
+</body>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmg7mTKTFUTfyD39A6slkZxzEzeV8eOZM&callback=initMap">
+    </script>
+      <script>
+      function initMap() {
+     
+          ckmap("none");
+         
+      }
+      
+      function ckmap(address){
+      	var uluru = {lat: 22.198745, lng: 113.543873};
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: uluru,
+          //disableDefaultUI: true
+        });
+        if(address!="none"){
+         var geocoder = new google.maps.Geocoder();
+		 geocodeAddress(geocoder, map,address);
+        }
+        
+      }
+      
+  function geocodeAddress(geocoder, resultsMap,address) {
+  //var address = document.getElementById('address').value;
+  geocoder.geocode({'address': address}, function(results, status) {
+    if (status === 'OK') {
+      resultsMap.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: resultsMap,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+    </script>
+</html>

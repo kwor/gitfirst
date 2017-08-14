@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/sign_in_up.css" rel="stylesheet"/>
+    <style type="text/css">
+    	 	.mui-input-group:after{height:0;}
+   	 	.mui-input-group:before{height: 0;}	
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="main" class="sign_content">
+		<img id="sign_content_background" src="img/pic/background.png" alt="background"/>
+		<div id="sign_in_div"></div>
+		
+			<form class="mui-input-group" id="sign_in_form" method="post" action="#">
+				<input type="text" id="user_name" name="user_name" class="mui-input-clear " placeholder="Username">
+				<input type="password" id="user_password" name="user_password" class="mui-input-password " placeholder="Password">
+				<input type="hidden" id="login_type" name="login_type" value="sign_in" />
+				<button type="button" onclick="check_info()" class="mui-btn mui-btn-primary " id="sign_in_button">Sign In</button>
+			</form>
+	<script language="JavaScript">
+		function is_not_empty(){
+			var user_name=$("#user_name").val();
+			var user_password=$("#user_password").val();
+			if(user_name == '' || user_password == ''){
+				alert("Please input your username and password!");
+				return false;
+			}
+			else{return true;}
+		}
+		function check_info(){
+			is_not_empty();
+			if(is_not_empty()){
+				var user_name=$("#user_name").val();
+				var user_password=$("#user_password").val();
+				var login_type=$("#login_type").val();
+				$.ajax({
+					type: 'GET',  //这里用GET
+					url: 'http://whois8.cn/test.php',
+					dataType: 'jsonp',  //类型
+					data: "user_name="+user_name+"&user_password="+user_password+"&login_type="+login_type,
+					jsonp: 'callback', //jsonp回调参数，必需
+					async: false,
+					success: function(data) {//返回的json数据
+						//alert(data["user_name"]); //回调输出
+						var status=data["return_code"];
+						var login_name=data["user_name"];
+						var login_id=data["user_id"];
+						//console.log(status);
+						switch(status){
+							case '000001':
+								alert("Login Succeed!");
+								console.log(login_name);
+								localStorage.setItem('user_name',login_name);
+								localStorage.setItem('user_id',login_id);
+							//	var uid= localStorage.getItem('user_id');
+							//console.log(uid);
+								window.location.href="main_page.html";
+								break;
+							case '000002':
+								alert("Wrond Password!");
+								break;
+							case '000000':
+								alert("User Not Exist!");
+								break;
+							default:
+								break;
+						}
+					},
+					timeout: 3000
+				})
+			}
+		}
+	</script>	
+		<div id="social_icons">
+			<img alt="facebook" src="img/pic/facebook_icon.png" class="social_icon" />
+			<img alt="wechat" src="img/pic/wechat_icon.png" class="social_icon" />
+			<img alt="instagram" src="img/pic/ins_icon.png" class="social_icon"/>
+		</div>
+		
+		<div id="extra_info">
+			<label id="extra_info_left"><a href="forgetpass.php">Forget password</a></label>
+			<label id="extra_info_right"><a href="sign_up.html">Sign up</a></label>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</body>
+<script language="JavaScript">
+	var h = document.documentElement.clientHeight;
+	var w = document.documentElement.clientWidth;
+	document.getElementById("main").style.height=h+"px";
+	document.getElementById("main").style.width=w+"px";
+	document.getElementById("sign_content_background").style.width=w+"px";
+	var social_imgs = document.getElementsByClassName("social_icon");
+	var imgs_w= social_imgs.item(0).offsetWidth;
+	var imgs_div_w=document.getElementById("social_icons").offsetWidth;
+	//var magin_value=(imgs_div_w-imgs_w*3)/2-30;
+	for(var i=1;i<social_imgs.length;i++){
+		social_imgs.item(i).style.marginLeft="15%";
+	}
+</script>
+</html>

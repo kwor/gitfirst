@@ -1,0 +1,96 @@
+/*  Top  */
+#top_bar{width: 100%; height: 10vh;position: fixed; top: 0; left: 0; background: #f18c3c; z-index: 9999;}
+#app_name, #_app_name{ width: 100%; height: 100%; text-align: center; position: relative;}
+#app_name_div{height: 5vh; position: relative; width: 100%; top: 2.5vh;}
+#top_menu{height:5vh; position: absolute; left: 1.75vh;}
+#filter{height: 5vh; position: absolute; right: 1.75vh;}
+#app_name span{color: #FFFFFF; font-size: 1.4rem; height: 5vh; line-height: 5vh;}
+#_app_name span{color: #FFFFFF; font-size: 1.4rem;}
+
+/*  Search  */
+#main_page_search{width: 90%; margin: 0 auto; margin-top: 11.25vh;}
+#search_input{border:#F18C3C 3px solid; }
+
+/*Restaurant Info*/
+#main_page_restaurant{width: 90%; margin-left: 5%;}
+.main_page_restaurant_video{width: 100%;}
+.main_page_restaurant_video img{width: 100%;}
+.restaurant_info{width: 100%;}
+.like-info{float: left; width: 48%;  text-align: left; position: relative;}
+.restaurant_name{display: block; margin: 2% auto; margin-left: 5%; color: #F18C3C; font-family: "serif"; font-size: 1.5rem;}
+.restaurant_distance{display: block; margin: 2% auto; margin-left: 5%; color: #000000; font-weight: bold; font-size: 1.2rem;}
+.restaurant_type{ display: block; margin: 2% auto; margin-left: 5%; color: #000000; font-weight: bold; font-size: 1.2rem;}
+.like-restaurant{width: 35%; position: relative; left: 25%; margin-top: 5%;}
+
+.dislike-info{float: right; width: 48%; text-align: right;}
+.friends_num{width: 70%; margin-right: 5%;}
+.friends_num a{text-decoration: none;}
+.dislike-info span{display:block; margin-right: 0%;}
+.dislike-restaurant{width: 35%; position: relative; right: 25%; margin-top: 5%;}
+
+/*  Restaurant Info HTML  */
+#restaurant_html_top_info_div{position: relative;  width: 100%;border-bottom: #dadada 2px solid; left: 0;}
+.restaurant_info_html{width: 90%; margin: 0 auto;}
+.restaurant_html_logo{float: left; width: 40%;}
+.restaurant_icon{width: 80%; margin: 0 auto; margin-top: 30%;}
+.restaurant_html_info{float: right; width: 60%; text-align: left;}
+.restaurant_info_html_div{width: 100%; position: relative; height: auto;margin-top: 6%; margin-bottom: 6%;}
+.restaurant_info_html_div .restaurant_html_icon{position: absolute; top: 0; left: 0; height: 1.5rem; line-height:1.5rem; }
+.score{position: absolute;height: 70%; top: 10%; }
+.restaurant_info_html_div span{float: left; margin-left: 20%; height: 1.5rem; line-height: 1.5rem; font-size: 0.9rem;}
+
+/*  Map Navigation  */
+#show_map_navi{width: 100%; margin-top: 80px;}
+#show_map_navi img{width: 100%;}
+
+
+/*  Friend Videos  */
+#friend_video_title{background: #ecddc8; margin-top: 10vh; width: 100%; height: 8vh; text-align: center;}
+#friend_video_title span{height: 8vh; line-height: 8vh; font-size: 1.2rem; color: #665f56; font-weight: bold;}
+#friend_video_div{width: 100%; }
+.friend_video_templete{width: 40%; height: 30vh; position: relative; float: left; margin-left: 6.5%; margin-top: 3vh;}
+.friend_video_templete_background{width: 100%; position: absolute; left: 0; z-index: 9;}
+.like_comments{background: #FFFFFF; border-radius: 10px; width: 90%; margin-left: 5%; height: 5vh; overflow: hidden; position: absolute; bottom: 3vh; z-index: 10;}
+.like_comments img{height: 2.6vh; margin-top: 1.2vh; float: left; margin-left: 2vw;}
+.like_comments span{height: 5vh; line-height: 5vh; display: block; float: left; margin-left: 2vw;}
+
+/*  Friend Video Details  */
+#friend_video_details{width:100%; margin-top: 10vh; background: #fff8f4; padding-top: 2vh; padding-bottom: 8.5vh;}
+#friend_video_details_top{width: 92%; margin-left: 4%;}
+#friend_video_details_top img{width: 100%;}
+
+#friend_video_details_headImg{width: 100%; background: #FFFFFF; height: 8vh; margin-top: 1vh;}
+#headImg{height: 8vh; float: left; margin-left: 2vw;}
+#details_of_user_name{float: left; height: 8vh; margin-left: 6vw; width: 35%;}
+#details_of_user_name span{display: block; height: 3vh; line-height: 3vh; margin-top: 1vh; width: 100%; overflow: hidden;}
+#details_of_icons{float: left; min-width: 37%; height: 8vh; overflow: hidden;}
+#details_of_icons img{height: 5vh; margin-top: 1.5vh; float: left; margin-left: 3vw;}
+#details_of_review{width: 100%; background: #FFFFFF; padding-bottom: 3.5vh;}
+#details_of_review h4{ margin-left: 1.5vw; padding-top: 1vh;}
+.review_contents{position: relative; width: 100%; height: auto; border-bottom: 2px #d6d6d6 solid; margin-top: 2vh; padding-bottom: 2vh;}
+.reviewImg{width: 10vw; float: left; margin-left: 5vw;}
+.reviewImg img{width: 100%;}
+.review_content_div{width: 70%; height: auto; float: left; margin-left: 5vw;}
+.review_contents span{width: 100%; overflow: hidden; color: #665f56;font-size: 0.8rem;}
+.review_time{position: absolute; bottom: 0; right: 5vw; color: #665f56;font-size: 0.8rem;}
+
+.suggested_restaurant{width: 100%; background: #FFFFFF; margin-top: 1.5vh; padding-bottom: 1.5vh;}
+.suggested_restaurant_img{width: 100%; overflow: hidden;}
+.suggested_restaurant_img img{float: left; width:30%; margin-left: 2%;}
+
+
+/*  Restaurant Nearby  */
+#nearby_body{width: 100%; height: auto; padding-bottom: 60px;}
+.restaurant_nearby{width: 90%; margin: 0 auto; margin-top: 5%;}
+.nearby_logo{width: 30%; float: left;}
+.nearby_logo img{width: 90%;}
+.nearby_info{float: left; width: 70%; text-align: left;}
+.nearby_info img{width: 50%;}
+.nearby_info span{display: block; margin: 2% 0;}
+
+/*  Bottom  */
+#bottom_menu{position: fixed; bottom: 0; left: 0; width: 100%; height: 7.5vh; background: #FFFFFF;}
+#bottom_ul_menu{list-style: none; width: 100%; height: 100%; margin: 0;}
+#bottom_ul_menu li{width: 20%; float: left; height: 100%;}
+#bottom_ul_menu li img{ height: 60%; position: relative; top: 20%;}
+

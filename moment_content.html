@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/moment_main.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+   
+    <style type="text/css">
+    	#app_name .mui-icon .mui-icon-clear .mui-hidden{line-height: 3vh;}
+    </style>
+</head>
+<body>
+
+	<div id="main" class="sign_content mui-content">
+		<!--  Top Templete  Start -->
+	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;">发朋友圈</h1>
+ </header>
+		<!--  Top Templete  End -->
+
+		<!--  Near By Templete  -->
+        <video id="videourl" src="" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">
+			 	Your browser does not support the video tag.</video>
+		
+		<textarea name="talk" id="talk">
+			
+		</textarea>
+		<button id="stalk">发布</button>
+		
+		<!--  Bottom Templete Start  -->
+		<div id="bottom_menu">
+			<ul id="bottom_ul_menu">
+				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
+				<li><img src="img/icon/message.png" onclick="window.location.href='chat_list.html'"></li>
+				<li><img src="img/icon/create.png"></li>
+				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
+				<li><img src="img/icon/user2.png" onclick="window.location.href='user_center.html'"></li>
+			</ul>
+		</div>
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+
+	var uid = localStorage.getItem('user_id');
+	var self = plus.webview.currentWebview();
+    var video = self.video;
+     document.getElementById('videourl').src="http://whois8.cn/files/"+video;
+	document.getElementById('stalk').addEventListener('tap', function() {
+	 var content=document.getElementById('talk').value;
+	
+	 mui.post('http://whois8.cn/sendkfspace_video.php',{
+		uid:uid,
+		video:video,
+		content:content
+	    },function(data){
+	    
+	        mui.alert(data);
+	       if(data=="success"){
+
+	       		 mui.openWindow({
+                  url: 'moment.html',
+                  id: 'moment'
+                   
+                })
+	       } 
+	       
+          //  document.getElementById("OA_task_1").innerHTML+="<br/>我说:"+content;
+	    
+	     },'text'
+       );
+	 });
+	 
+
+
+</script>
+</html>

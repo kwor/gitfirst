@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/moment_main.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="main" class="sign_content">
+		<!--  Top Templete  Start -->
+		<div id="top_bar">
+			<div id="app_name" class="top_frame">
+				<div id="app_name_div">
+					<span>Meet with Restaurant</span>
+					<img src="img/icon/top_menu.png" alt="top_menu" id="top_menu">
+					<img src="img/icon/edit.png" alt="edit" id="filter">
+				</div>
+			</div>
+		</div>
+		<!--  Top Templete  End -->
+		
+		<div id="select_moment_type">
+			<div id="select_moment_nearby" class="select_moment_type">
+				<span class="select_moment_span clicked" id="nearby">NEARBY</span>
+			</div>
+			<div id="select_moment_following" class="select_moment_type">
+				<span class="select_moment_span not_clicked" id="following">FOLLOWING</span>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<script language="JavaScript">
+			window.onload=function(){
+				var nearby_templetes=document.getElementsByClassName("nearby");
+				var following_templetes=document.getElementsByClassName("following");
+				for (var i=0;i<nearby_templetes.length;i++){
+					nearby_templetes.item(i).style.display="block";
+				}for (var i=0;i<following_templetes.length;i++){
+					following_templetes.item(i).style.display="none";
+				}
+			}
+			var nearby_templetes=document.getElementsByClassName("nearby");
+			var following_templetes=document.getElementsByClassName("following");
+			document.getElementById('nearby').style.fontWeight="bold";
+			document.getElementById('nearby').style.borderBottom="3px #F18C3C solid";
+			document.getElementById('following').style.fontWeight="lighter";
+			document.getElementById('following').style.border="none";
+			mui("#select_moment_type").on('tap','.select_moment_type',function(){
+				//获取id
+				//var id = this.getAttribute("id");
+				//alert(id);
+				var id=this.getElementsByTagName("span").item(0).getAttribute("id");
+				if(id == 'nearby'){
+					document.getElementById(id).style.fontWeight="bold";
+					document.getElementById(id).style.borderBottom="3px #F18C3C solid";
+					document.getElementById('following').style.fontWeight="lighter";
+					document.getElementById('following').style.border="none";
+					for (var i=0;i<nearby_templetes.length;i++){
+						nearby_templetes.item(i).style.display="block";
+					}for (var i=0;i<following_templetes.length;i++){
+						following_templetes.item(i).style.display="none";
+					}
+				}else{
+					document.getElementById(id).style.fontWeight="bold";
+					document.getElementById(id).style.borderBottom="3px #F18C3C solid";
+					document.getElementById('nearby').style.fontWeight="lighter";
+					document.getElementById('nearby').style.border="none";
+					for (var i=0;i<nearby_templetes.length;i++){
+						nearby_templetes.item(i).style.display="none";
+					}for (var i=0;i<following_templetes.length;i++){
+						following_templetes.item(i).style.display="block";
+					}
+				}
+			})
+		</script>
+		
+<div id="OA_task_1">
+		<!--  Near By Templete  -->
+	
+ 
+ </div>
+		
+<div id="OA_task_2">		
+		<!--  Following Templete  -->
+ </div>
+
+		<!--  Bottom Templete Start  -->
+		<div id="bottom_menu">
+			<ul id="bottom_ul_menu">
+				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
+				<li><img src="img/icon/message.png" onclick="window.location.href='chat_list.html'"></li>
+				<li><img src="img/icon/create.png"></li>
+				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
+				<li><img src="img/icon/user2.png" onclick="window.location.href='user_center.html'"></li>
+			</ul>
+		</div>
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+	var h = document.documentElement.clientHeight;
+	var w = document.documentElement.clientWidth;
+	document.getElementById("main").style.height=h+"px";
+	document.getElementById("main").style.width=w+"px";
+	var uid = localStorage.getItem('user_id');
+	var all=0;
+	var sel=1;
+	mui.getJSON('http://whois8.cn/getspacelist.php',{uid:uid,tp:all},function(data){
+		       //数据绑定在此处
+	           var list = document.getElementById("OA_task_1");
+	         
+		       mui.each(data,function(index,item){
+    
+                    list.innerHTML +=   '<div class="moment_content_templete nearby" style="display:block"><div class="moment_content_templete_top">'+
+                                        '<img src="img/icon/16574553a435563.png" class="moment_user_headImg" /><div class="monent_user_name">'+
+                                        '<span class="moment_user_name">'+item[0]+'</span>'+
+					                    '<span class="moment_post_time">'+item[1]+'</span></div>'+
+					                    '<img src="img/pic/more_icon.png" class="more_icon" /></div>'+
+                                        '<div class="monent_video"><video src="http://whois8.cn/files/'+item[4]+'">播放器</video></div>'+
+                                        '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">All day breakfast</span></div>'+
+                                        '<div class="moment_share_comment"><div class="moment_share"><img src="img/icon/share_black.png" />'+
+					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment">'+
+					                    '<img src="img/icon/comment_num.png" /><span class="share_num">425</span></div></div></div>';
+                })
+		      
+ 
+	        });
+		mui.getJSON('http://whois8.cn/getspacelist.php',{uid:uid,tp:sel},function(data){
+		       //数据绑定在此处
+	           var list2 = document.getElementById("OA_task_2");
+	         
+		       mui.each(data,function(index,item){
+    
+                    list2.innerHTML +=  '<div class="moment_content_templete following"><div class="moment_content_templete_top">'+
+                                        '<img src="img/icon/16574553a435563.png" class="moment_user_headImg" /><div class="monent_user_name">'+
+                                        '<span class="moment_user_name">'+item[0]+'</span>'+
+					                    '<span class="moment_post_time">'+item[1]+'</span></div>'+
+					                    '<img src="img/pic/more_icon.png" class="more_icon" /></div>'+
+                                        '<div class="monent_video"><video src="http://whois8.cn/files/'+item[4]+'">播放器</video></div>'+
+                                        '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">All day breakfast</span></div>'+
+                                        '<div class="moment_share_comment"><div class="moment_share"><img src="img/icon/share_black.png" />'+
+					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment">'+
+					                    '<img src="img/icon/comment_num.png" /><span class="share_num">425</span></div></div></div>';
+                })
+		      
+ 
+	        });
+	
+	var cmr = plus.camera.getCamera();
+	
+	function stopCapture(){
+    console.log("stopCapture");
+    cmr.stopVideoCapture();
+    }
+	
+	// 扩展API加载完毕后调用onPlusReady回调函数 
+document.addEventListener( "plusready", onPlusReady, false );
+var r = null; 
+// 扩展API加载完毕，现在可以正常调用扩展API 
+function onPlusReady() {
+}
+	document.getElementById('filter').addEventListener('tap', function() {
+	
+	    
+                //获取相机
+                cmr.startVideoCapture(function(p) {
+                //录像
+                plus.io.resolveLocalFileSystemURL(p, function(entry) {
+                //通过URL参数获取目录对象或文件对象 就是获取到录像文件位置    
+                //console.log(p);//打印文件位置，可以直接用作上传路径
+               
+                //console.log(uid);
+                //document.getElementById('videoshow').src=p;
+                  
+                var arr = p.split('/');
+		 
+                var filename=(new Date()).valueOf()+arr[arr.length-1];
+                
+                 var task = plus.uploader.createUpload( "http://whois8.cn/upvideo.php", 
+		{ method:"POST",blocksize:204800,priority:100 },
+		function ( t, status ) {
+			// 上传完成
+		if ( status == 200 ) {
+		console.log(filename);
+		 mui.openWindow({
+                  url: 'moment_content.html',
+                  id: 'moment_content',
+                  extras:{
+                    video:filename
+                  }  
+               })
+			} else {
+				alert( "短片上传失败: " + status );
+			}
+		}
+	);
+	task.addFile( p, {key:"testdoc",name:filename} );
+	task.addData( "string_key", "string_value" );
+	//task.addEventListener( "statechanged", onStateChanged, false );
+	task.start();
+
+    
+                    }, function(e) {
+                        console.log("读取录像文件错误：" + e.message);
+                    });
+
+                }, function(e) {
+                    console.log("失败");
+                    plus.nativeUI.toast("录像失败！",{duration:"long"});
+                }, {
+                	
+                    filename: "_doc/camera/",//文件保存目录
+                    index: 2
+                });
+	             // 拍摄10s后自动完成 
+                var timer = setTimeout( stopCapture, 10000 );
+	 });
+	// 停止摄像
+</script>
+
+
+</html>

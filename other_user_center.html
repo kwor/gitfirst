@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/user.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body style="background: #FFFFFF;">
+	<div id="main" class="sign_content">
+		<!--  Top Templete  Start -->
+		<div id="top_bar">
+			<div id="app_name" class="top_frame">
+				<div id="app_name_div">
+					<span id="unamemain">{UserName}</span>
+					<img src="img/icon/top_menu.png" alt="top_menu" id="top_menu">
+					<img src="img/icon/edit.png" alt="edit" id="filter">
+				</div>
+			</div>
+		</div>
+		<!--  Top Templete  End -->
+		
+		<div id="user_info">
+			<div id="user_headImg" style="text-align: left;">
+				<img src="img/icon/user_headImg.png" style="margin-left: 6vw;" />
+				<div id="other_user_info">
+					<span id="uname">{UserName}</span>
+					<span id="utype">{UserType}</span>
+					<span id="uphone">{UserIntro}</span>
+				</div>
+				<div id="other_ops">
+					<div class="other_ops">
+						<span><img src="img/icon/follow.png"/></span>
+						<span style="margin-left: 3vw;">Follwo</span>
+						<div style="clear: both;"></div>
+					</div>
+					<div class="other_ops">
+						<span><img src="img/icon/chat.png"/></span>
+						<span style="margin-left: 3vw;">Chat</span>
+						<div style="clear: both;"></div>
+					</div>
+					<div class="other_ops">
+						<span><img src="img/icon/send.png"/></span>
+						<span style="margin-left: 3vw;">Send</span>
+						<div style="clear: both;"></div>
+					</div>
+				</div>
+			</div>
+			<div id="user_following_info">
+				<div class="following_info">
+					<span id="follownum">0</span>
+					<span>Follow</span>
+				</div>
+				<div class="following_info">
+					<span id="followernum">0</span>
+					<span>Followers</span>
+				</div>
+				<div class="following_info">
+					<span  id="videonum">0</span>
+					<span>Videos</span>
+				</div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		
+		<div id="user_videos">
+			<!--<img src="img/pic/dish1.png" />
+			<img src="img/pic/dish2.png" />
+			<img src="img/pic/dish3.png" />
+			<img src="img/pic/dish2.png" />
+			<img src="img/pic/dish3.png" />
+			<img src="img/pic/dish1.png" />-->
+			<div style="clear: both;"></div>
+		</div>
+		
+		<!--  Bottom Templete Start  -->
+		<div id="bottom_menu">
+			<ul id="bottom_ul_menu">
+				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
+				<li><img src="img/icon/message.png" onclick="window.location.href='chat_list.html'"></li>
+				<li><img src="img/icon/create.png"></li>
+				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
+				<li><img src="img/icon/menu_user.png" onclick="window.location.href='user_center.html'"></li>
+			</ul>
+		</div>
+		</div>
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+	var h = document.documentElement.clientHeight;
+	var w = document.documentElement.clientWidth;
+	document.getElementById("main").style.height=h+"px";
+	document.getElementById("main").style.width=w+"px";
+</script>
+<script>
+	var self = plus.webview.currentWebview();
+    var fuid = self.fuid;
+	  mui.getJSON('http://whois8.cn/getinfoforuser.php',{uid:fuid},function(data){
+		    //数据绑定在此处
+		       var unamemain= document.getElementById('unamemain');
+		       unamemain.innerHTML=data["uname"];
+		      	
+		       var uname= document.getElementById('uname');
+		       uname.innerHTML=data["uname"];
+		       
+		       var utype= document.getElementById('utype');
+		       utype.innerHTML=data["type"];
+		       
+		       var uphone= document.getElementById('uphone');
+		       uphone.innerHTML=data["phone"];
+	       
+		       var follownum= document.getElementById('follownum');
+		       follownum.innerHTML=data["follownum"];
+		       
+		       var followernum= document.getElementById('followernum');
+		       followernum.innerHTML=data["followernum"];
+		       
+		       var videonum= document.getElementById('videonum');
+		       videonum.innerHTML=data["videonum"];   
+		          
+		});  
+          
+        mui.getJSON('http://whois8.cn/getvideolist.php',{uid:fuid},function(data){
+		    //数据绑定在此处
+	           var user_videos= document.getElementById('user_videos');
+		       mui.each(data,function(index,item){
+		      // console.log(item[1]);
+               user_videos.innerHTML+="<video src='http://whois8.cn/files/"+item[1]+"'>播放器</video>";
+               })
+		});  	
+</script>
+</html>

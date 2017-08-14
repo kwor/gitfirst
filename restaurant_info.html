@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/sign_in_up.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="main" class="sign_content ">
+		<!--  Top Templete  Start -->
+	 
+						
+   <header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;">Meet with Restaurant</h1>
+    </header>
+		<!--  Top Templete  End -->
+		
+		<div id="main_page_search">
+			<div class="mui-input-row mui-search">
+				<input type="search" id="search_input" class="mui-input-clear" placeholder="Search restaurant...">
+			</div>
+		</div>
+		
+		<div id="restaurant_html_top_info_div">
+			<div class="restaurant_info_html">
+				<div class="restaurant_html_logo">
+					<img src="img/pic/restaurant_icon.png" class="restaurant_icon" />
+				</div>
+				<div class="restaurant_html_info">
+					<span id="sname">{name}</span>
+					<div class="restaurant_info_html_div">
+						<img src="img/pic/restaurant_score.png" class="score" />
+						<span class="price" style=" float: right; margin-left: 0;">$&nbsp;51-&nbsp;100</span>
+						<div style="clear: both;"></div>
+					</div>
+					<div class="restaurant_info_html_div">
+						<img src="img/icon/categ.png" class="restaurant_html_icon" />
+						<span id="stype">Western</span>
+						<div style="clear: both;"></div>
+					</div>
+					<div class="restaurant_info_html_div">
+						<img src="img/icon/tel.png" class="restaurant_html_icon" />
+						<span id="sphone">2786&nbsp;3336</span>
+						<div style="clear: both;"></div>
+					</div>
+					<div class="restaurant_info_html_div" onclick="open_map(this)">
+						<img src="img/pic/location.png" class="restaurant_html_icon location" />
+						<input type="hidden" value="D Cafe" name="map_elem" id="map_elem"/>
+						<span style="height: auto;" id="saddr">Room V220, Podium, Jockey Club Innovation Tower, Polyu, Hung Hom</span>
+						<div style="clear: both;"></div>
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			<div style="clear: both;"></div>
+		</div>
+		<script language="JavaScript">
+			function open_map(obj){
+				var location=obj.getElementsByTagName("span").item(0).innerHTML;
+				var map_elem=$("#map_elem").val();
+				//alert(location);
+				window.location.href='restaurant_location_map.html?location='+map_elem;
+			}
+		</script>
+		<!--  Restaurant Nearby List Start -->
+		<div id="nearby_body">
+			<div class="restaurant_nearby">
+				<div class="nearby_logo">
+					<img src="img/pic/nearby_logo_1.png" />
+				</div>
+				<div class="nearby_info">
+					<span>Pasta</span>
+					<span>$&nbsp;48</span>
+					<img src="img/pic/restaurant_score.png" class="nearby_score" />
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="restaurant_nearby">
+				<div class="nearby_logo">
+					<img src="img/pic/nearby_logo_2.png" />
+				</div>
+				<div class="nearby_info">
+					<span>Tomato pesto with walnut</span>
+					<span>$&nbsp;52</span>
+					<img src="img/pic/restaurant_score.png" class="nearby_score" />
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="restaurant_nearby">
+				<div class="nearby_logo">
+					<img src="img/pic/nearby_logo_1.png" />
+				</div>
+				<div class="nearby_info">
+					<span>Pasta</span>
+					<span>$&nbsp;48</span>
+					<img src="img/pic/restaurant_score.png" class="nearby_score" />
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+			
+			<div class="restaurant_nearby">
+				<div class="nearby_logo">
+					<img src="img/pic/nearby_logo_2.png" />
+				</div>
+				<div class="nearby_info">
+					<span>Tomato pesto with walnut</span>
+					<span>$&nbsp;52</span>
+					<img src="img/pic/restaurant_score.png" class="nearby_score" />
+				</div>
+				<div style="clear: both;"></div>
+			</div>
+		</div>
+		
+		<!--  Restaurant Nearby List End -->
+		
+		
+		<!--  Bottom Templete Start  -->
+		<div id="bottom_menu">
+			<ul id="bottom_ul_menu">
+				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
+				<li><img src="img/icon/message.png" onclick="window.location.href='chat_list.html'"></li>
+				<li><img src="img/icon/create.png"></li>
+				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
+				<li><img src="img/icon/user2.png" onclick="window.location.href='user_center.html'"></li>
+			</ul>
+		</div>
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+	var h = document.documentElement.clientHeight;
+	var w = document.documentElement.clientWidth;
+	document.getElementById("main").style.height=h+"px";
+	document.getElementById("main").style.width=w+"px";
+	
+	var self = plus.webview.currentWebview();
+    var shopid = self.shopid;
+	
+		  mui.getJSON('http://whois8.cn/getshopinfo.php',{shopid:shopid},function(data){
+		    //数据绑定在此处
+	          
+		       
+		       var sname= document.getElementById('sname');
+		       sname.innerHTML=data["name"];
+		       
+		        var stype= document.getElementById('stype');
+		       stype.innerHTML=data["type"];
+		       
+		        var saddr= document.getElementById('saddr');
+		       saddr.innerHTML=data["addr"];
+		       
+		        var sphone= document.getElementById('sphone');
+		       sphone.innerHTML=data["phone"];
+		       
+		       
+		});  
+	
+	
+</script>
+</html>

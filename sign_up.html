@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/sign_in_up.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	<div id="main" class="sign_content">
+		<img id="sign_content_background" src="img/pic/background.png" alt="background"/>
+		<div id="sign_up_div"></div>
+		<!-- For Debug
+			<form id="sign_up_form" class="mui-input-group">
+				<input type="text" id="user_email_up" name="user_email" class="mui-input-clear" placeholder="Email">
+				<input type="text" id="user_name_up" name="user_name" class="mui-input-clear" placeholder="Username">
+				<input type="password" id="user_password_up" name="user_password" class="mui-input-password" placeholder="Password">
+				<input type="password" id="confirm_password_up" name="confirm_password" class="mui-input-password" placeholder="Confirm Password">
+				<button type="submit" class="mui-btn mui-btn-primary" id="sign_up_button">Sign Up</button>
+			</form>
+		-->
+		
+			<form class="mui-input-group" id="sign_up_form" method="post" action="#">
+				<input type="text" id="user_email_up" name="user_email" class="mui-input-clear" placeholder="Email">
+				<span id="error_message1" class="error_message"></span>
+				<input type="text" id="user_name_up" name="user_name" class="mui-input-clear " placeholder="Username">
+				<span id="error_message2" class="error_message"></span>
+				<input type="password" id="user_password_up" name="user_password" class="mui-input-password " placeholder="Password">
+				<span id="error_message3" class="error_message"></span>
+				<input type="password" id="confirm_password" name="confirm_password" class="mui-input-password" placeholder="Confirm Password">
+				<span id="error_message4" class="error_message"></span>
+				<input type="hidden" id="login_type" name="login_type" value="sign_up" />
+				<button type="button" class="mui-btn mui-btn-primary" id="sign_up_button" onclick="check_info()">Sign Up</button>
+			</form>
+	<script language="JavaScript">
+		function is_not_empty(){
+			var user_email_up=$("#user_email_up").val();
+			var user_name_up=$("#user_name_up").val();
+			var user_password_up=$("#user_password_up").val();
+			var confirm_password=$("#confirm_password").val();
+			
+			if(user_email_up == '' ){
+				$("#error_message1").text("Please input your email !");
+				$("#user_email_up").focus();
+				return false;
+			}else{
+				$("#error_message1").text("");
+			}
+			
+			if(user_name_up == '' ){
+				$("#error_message2").text("Please input your name !");
+				$("#user_name_up").focus();
+				return false;
+			}else{
+				$("#error_message2").text("");
+			}
+			
+			if(user_password_up == '' ){
+				$("#error_message3").text("Please input your password !");
+				$("#user_password_up").focus();
+				return false;
+			}else{
+				$("#error_message3").text("");
+			}
+			
+			if(confirm_password == '' ){
+				$("#error_message4").text("Password again!");
+				$("#confirm_password").focus();
+				return false;
+			}else{
+				if(user_password_up !== confirm_password){
+					$("#error_message4").text("Two password is not same!");
+					$("#confirm_password").focus();
+					return false;
+				}
+				else{
+					$("#error_message4").text("");
+					return true;
+				}
+			}
+		}
+		function check_info(){
+			if(is_not_empty()){
+				var user_email_up=$("#user_email_up").val();
+				var user_name_up=$("#user_name_up").val();
+				var user_password_up=$("#user_password_up").val();
+				var login_type=$("#login_type").val();
+				
+				$.ajax({
+					type: 'GET',  //这里用GET
+					url: 'http://whois8.cn/test.php',
+					dataType: 'jsonp',  //类型
+					data: "user_name="+user_name_up+"&user_password="+user_password_up+"&login_type="+login_type+"&user_email="+user_email_up,
+					jsonp: 'callback', //jsonp回调参数，必需
+					async: false,
+					success: function(data) {//返回的json数据
+						//alert(data["return_code"]); //回调输出
+						var status=data["return_code"];
+						var login_name=data["user_name"];
+						//console.log(status);
+						switch(status){
+							case '001001':
+								alert("Sign Up Succefully");
+								console.log(login_name);
+								localStorage.setItem('user_name',login_name);
+								window.location.href="main_page.html";
+								break;
+							case '001002':
+								alert("User Exist!");
+								break;
+							case '001000':
+								alert("Please Check your Internet!");
+								break;
+							default:
+								break;
+						}
+					},
+					timeout: 3000
+				})
+			}
+		}
+	</script>
+		
+		<div id="extra_info_up">
+			<label id="extra_info_left">Already have an account? &nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html" style="color: #007aff;">Sign in</a></label>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</body>
+<script language="JavaScript">
+	var h = document.documentElement.clientHeight;
+	var w = document.documentElement.clientWidth;
+	document.getElementById("main").style.height=h+"px";
+	document.getElementById("main").style.width=w+"px";
+	document.getElementById("sign_content_background").style.width=w+"px";
+
+</script>
+</html>

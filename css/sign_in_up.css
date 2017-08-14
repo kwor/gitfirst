@@ -1,0 +1,35 @@
+#main{position: relative;width: 100%;}
+#sign_content_background{position: absolute; left: 0; z-index: -1;}
+#sign_in_div{zoom:1;width:80%; height: 60%; border-radius: 50px; position: absolute; top: 8%; left: 10%; z-index: 1; background: #000000;filter:alpha(Opacity=80);-moz-opacity:0.35;opacity: 0.35;}
+#sign_in_form{zoom:1; height:0px; width:80%; height: 60%; border-radius: 50px; position: absolute; top: 8%; left: 10%; z-index: 2; background: none;}
+#user_name,#user_password,#sign_in_button{ border:0px; zoom:1;width: 80%; font-size:24px; padding: 20px; margin-left: 10%; height: 20%; margin-top:15%;border-radius: 50px; color: #FFFFFF; background: #af7249; z-index: 2;}
+::-webkit-input-placeholder { /* WebKit browsers */  
+    color:    #FFFFFF;  
+}  
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */  
+   color:    #FFFFFF;  
+   opacity:  1;  
+}  
+::-moz-placeholder { /* Mozilla Firefox 19+ */  
+   color:    #FFFFFF;  
+   opacity:  1;  
+}  
+:-ms-input-placeholder { /* Internet Explorer 10+ */  
+   color:    #FFFFFF;  
+}  
+
+.error_message{color:#00ff00; margin-left: 12vw; display: block; margin-top: 2vh;}
+
+#sign_in_button{background-color: #efb502; color: #FFFFFF;}
+#social_icons{width: 80%; height: 10%; margin-left: 10%; position: absolute; bottom: 18%;}
+.social_icon{ height: 100%; width: auto;  float:left;}
+#extra_info{width: 70%; height: 5%; line-height: 5%; color: #FFFFFF; margin-left: 15%; position: absolute; bottom: 2%;}
+#extra_info_up{width: 80%; height: 5%; line-height: 5%; color: #FFFFFF; margin-left: 15%; position: absolute; bottom: 2%;}
+#extra_info_left{ float: left; height: 100%;}
+#extra_info_right{ float: right; height: 100%; font-size: 18px; font-weight: bold;}
+#extra_info a{text-decoration: none; color: #FFFFFF;}
+
+#sign_up_div{zoom:1;width:80%; height: 80%; border-radius: 50px; position: absolute; top: 8%; left: 10%; z-index: 1; background: #000000;filter:alpha(Opacity=80);-moz-opacity:0.35;opacity: 0.35;}
+#sign_up_form{zoom:1;width:80%; height: 80%; border-radius: 50px; position: absolute; top: 8%; left: 10%; z-index: 2; background: none;}
+#confirm_password,#user_email_up,#user_name_up,#user_password_up,#sign_up_button{border:0px;zoom:1; width: 80%; font-size:24px; padding:20px; margin-left: 10%; height: 10%; margin-top:10%;border-radius: 50px; color: #FFFFFF; background: #af7249; z-index: 2;}
+#sign_up_button{background-color: #efb502; color: #FFFFFF; padding: 0;}

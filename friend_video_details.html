@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/moment_main.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+		$(document).ready(function(){
+			if(localStorage.length>0){
+				var user_id = localStorage.key(0);
+				var time_id = localStorage.key(1);
+				//console.log(classid);
+				var classname = localStorage.getItem(user_id);
+				var classtime = localStorage.getItem(time_id);
+				//console.log(classname);
+			}
+			$.ajax({
+				type: 'GET',  //这里用GET
+				url: 'http://whois8.cn/getUserInfo.php',
+				dataType: 'jsonp',  //类型
+				data: "user_id="+classname+"&comment_time="+classtime,
+				jsonp: 'callback', //jsonp回调参数，必需
+				async: false,
+				success: function(data) {//返回的json数据
+					//alert(data["name"]); //回调输出
+					$("#_user_name").text(data["name"]);
+					$("#_comment_time").text(data["time"]);
+				},
+				timeout: 3000
+			})
+			//...
+		});
+    </script>
+</head>
+<body>
+	<div id="main" class="sign_content">
+		<!--  Top Templete  Start -->
+
+	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;">Friend Videos</h1>
+    </header>
+			
+			
+		<!--  Top Templete  End -->
+		
+		<!--  Near By Templete  -->
+		<div id="friend_video_details">
+			<div id="friend_video_details_top">
+				<!--<img src="img/pic/videoshot.png" />-->
+			</div>
+			
+			<div id="friend_video_details_headImg">
+				<img src="img/pic/friend_video_detail_headImg.png" id="headImg" />
+				<div id="details_of_user_name">
+					<span id="_user_name">Wayne Alvarez</span>
+					<span id="_comment_time">2017-04-26</span>
+				</div>
+				<div id="details_of_icons">
+					<img src="img/pic/icon_like.png" />
+					<img src="img/pic/icon_share.png" />
+					<img src="img/pic/icon_comment.png" />
+				</div>
+			</div>
+			
+			<div id="details_of_review">
+				<h4>Reviews</h4>
+			</div>
+	
+			
+		</div>
+		
+		<!--  Bottom Templete Start  -->
+		<div id="bottom_menu">
+			<ul id="bottom_ul_menu">
+				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
+				<li><img src="img/icon/message.png"></li>
+				<li><img src="img/icon/create.png"></li>
+				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
+				<li><img src="img/icon/user2.png"></li>
+			</ul>
+		</div>
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+	var h = document.documentElement.clientHeight;
+	var w = document.documentElement.clientWidth;
+	document.getElementById("main").style.height=h+"px";
+	document.getElementById("main").style.width=w+"px";
+	var self = plus.webview.currentWebview();
+    var vid = self.vid;
+	mui.getJSON('http://whois8.cn/getshopvideoinfo.php',{vid:vid},function(data){
+		    //数据绑定在此处
+		       var friend_video_details_top= document.getElementById('friend_video_details_top');
+		       friend_video_details_top.innerHTML='<video src="http://whois8.cn/files/'+data["video"]+'" controls="controls" preload="auto"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video>';
+		           
+		});
+	mui.getJSON('http://whois8.cn/getvideocommentlist.php',{vid:vid},function(data){
+		       //数据绑定在此处
+	           var list2 = document.getElementById("details_of_review");
+	         
+		       mui.each(data,function(index,item){
+    
+list2.innerHTML += '<div class="review_contents"><div class="reviewImg"><img src="img/pic/reviewImg.png" /></div>'+
+					'<div class="review_content_div"><span class="review_content_span">'+item[1]+'</span></div>'+
+					'<div class="review_time"><span>'+item[2]+'</span></div>'+
+					'<div style="clear: both;"></div></div>';
+               })
+	        });	
+</script>
+</html>
