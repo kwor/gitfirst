@@ -141,30 +141,7 @@ function onPlusReady() {
 	// 停止摄像
 
 </script>
- <script type="text/javascript">//--获取视频缩略图--
-            function vload(obj) {
-                $(obj).removeAttr("poster");
-                var vimg = $("<img/>")[0];
-                captureImage(obj, vimg);
-                $(obj).after(vimg);
-                $(obj).remove();
-            };
-            var scale = 0.8; //缩放
-            function captureImage(video, output) { //截图 
-                try {
-                    var videocanvas = $("<canvas/>")[0];
-                    videocanvas.width = video.videoWidth * scale;
-                    videocanvas.height = video.videoHeight * scale;
-                    videocanvas.getContext('2d').drawImage(video, 0, 0, videocanvas.width, videocanvas.height);
-                    output.src = videocanvas.toDataURL("image/png");
-                    delete videocanvas;
-                } catch(e) {
-                    output.src = "加载动画.gif";
-                }
- 
-            };
-            //--获取视频缩略图--
-</script>
+
 <script>
 		mui.getJSON('http://whois8.cn/getindex.php',null,function(data){
 		       //数据绑定在此处
@@ -172,7 +149,7 @@ function onPlusReady() {
 	         
 		       mui.each(data,function(index,item){
     
-                    list2.innerHTML +=  '<div class="main_page_restaurant_video"><video src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
+                    list2.innerHTML +=  '<div class="main_page_restaurant_video"><video onload="vload(this)" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
                                         '<div class="restaurant_info"><div class="like-info">'+
 					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><100m</span>'+
 					'<span class="restaurant_type">'+item[2]+' Food</span><img src="img/icon/like.png" class="like-restaurant"/></div>'+
@@ -226,7 +203,32 @@ mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
 	
 	
 </script>
-
+ <script type="text/javascript">//--获取视频缩略图--
+            function vload(obj) {
+            	console.log("111");
+                $(obj).removeAttr("poster");
+                var vimg = $("<img/>")[0];
+                captureImage(obj, vimg);
+                $(obj).after(vimg);
+                $(obj).remove();
+                
+            };
+            var scale = 0.8; //缩放
+            function captureImage(video, output) { //截图 
+                try {
+                    var videocanvas = $("<canvas/>")[0];
+                    videocanvas.width = video.videoWidth * scale;
+                    videocanvas.height = video.videoHeight * scale;
+                    videocanvas.getContext('2d').drawImage(video, 0, 0, videocanvas.width, videocanvas.height);
+                    output.src = videocanvas.toDataURL("image/png");
+                    delete videocanvas;
+                } catch(e) {
+                    output.src = "加载动画.gif";
+                }
+ 
+            };
+            //--获取视频缩略图--
+</script>
 
 
 </html>
