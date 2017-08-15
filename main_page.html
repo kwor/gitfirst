@@ -1,85 +1,117 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="js/mui.min.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <link href="css/mui.min.css" rel="stylesheet"/>
-    <link href="css/sign_in_up.css" rel="stylesheet"/>
-    <link href="css/main_page.css" rel="stylesheet"/>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-      	 $(document.body).css({
-      	 	"overflow-x":"hidden",
-      	 	"overflow-y":"hidden"
-      	 });
-    </script>
-</head>
-<body>
-	<div id="main" class="sign_content mui-scroll-wrapper">
-		<!--  Top Templete  Start -->
-		<div id="top_bar">
-			<div id="app_name" class="top_frame">
-				<div id="app_name_div">
-					<span>Meet with Restaurant</span>
-					<img src="img/icon/top_menu.png" alt="top_menu" id="top_menu">
-					<img src="img/icon/filter.png" alt="filter" id="filter">
-				</div>
-			</div>
-		</div>
-		<!--  Top Templete  End -->
-		
-		<div id="main_page_search">
-			<div class="mui-input-row mui-search">
-				<input type="search" id="search_input" class="mui-input-clear" placeholder="Search restaurant...">
-			</div>
-		</div>
-		
-<video id="video" controls="controls">
-<source src="http://whois8.cn/files/1502381710889video_061.mov">
-</video>
-<div id="output"></div>
 
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>入口</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+	</head>
 
-
-
-		<div id="main_page_restaurant" class="mui-scroll">
- 
-			
-		</div>
-		
-		
-		<!--  Bottom Templete Start  -->
- 
-			<nav class="mui-bar mui-bar-tab">
-			<a class="mui-tab-item mui-active" href="#tabbar">
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">首页</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" data-id="home">
 				<span class="mui-icon mui-icon-home"></span>
 				<span class="mui-tab-label">首页</span>
 			</a>
-			<a class="mui-tab-item" href="#tabbar-with-chat" id="cvideo">
+	  		<a class="mui-tab-item" href="#tabbar-with-chat" data-id="chat_list">
 				<span class="mui-icon mui-icon-email"></span>
 				<span class="mui-tab-label">消息</span>
 			</a>
-			<a class="mui-tab-item" href="#tabbar-with-contact">
-				<span class="mui-icon mui-icon-contact"></span>
-				<span class="mui-tab-label">通讯录</span>
+			<a class="mui-tab-item" id="cvideo" data-id="camera">
+				<span class="mui-icon mui-icon-camera"></span>
+				<span class="mui-tab-label">拍摄</span>
 			</a>
-			<a class="mui-tab-item" href="#tabbar-with-map">
-				<span class="mui-icon mui-icon-gear"></span>
+			<a class="mui-tab-item" href="#tabbar-with-contact"  data-id="moment">
+				<span class="mui-icon mui-icon-pengyouquan"></span>
+				<span class="mui-tab-label">朋友圈</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map"   data-id="user_center">
+				<span class="mui-icon mui-icon-gear" ></span>
 				<span class="mui-tab-label">设置</span>
 			</a>
 		</nav>
-		<!--  Bottom Templete End  -->
-	</div>
-</body>
-<script language="JavaScript">
-	var h = document.documentElement.clientHeight;
-	var w = document.documentElement.clientWidth;
-	document.getElementById("main").style.height=h+"px";
-	document.getElementById("main").style.width=w+"px";
-	var cmr = plus.camera.getCamera();
+		<script src="js/mui.min.js"></script>
+
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui.plusReady(function() {
+				var subInfos = [{
+					url: 'home.html',
+					id: 'home'
+				}, {
+					url: 'chat_list.html',
+					id: 'chat_list',
+				}, {
+					url: 'moment.html',
+					id: 'moment'
+				}, {
+					url: 'user_center.html',
+					id: 'user_center'
+				}];
+				var subStyles = {
+					top: '45px',
+					bottom: '51px'
+				};
+
+				// 根据id查询子页面的信息
+				var getSubInfoById = function(infoList, id) {
+					var result = null;
+					for(var i = 0, len = infoList.length; i < len; i++) {
+						var _info = infoList[i];
+						if(_info.id === id) {
+							result = _info;
+							break;
+						}
+					}
+					return result;
+				};
+
+				var mainWv = plus.webview.currentWebview();
+				var titleEL = document.querySelector('.mui-title');
+				var activeTab = '';
+
+				// 默认只加载首页webview
+				var homeWv = plus.webview.create(subInfos[0].url, subInfos[0].id, subStyles);
+				mainWv.append(homeWv);
+				activeTab = subInfos[0].id;
+
+				// 点击切换，动态创建其它webview；
+				mui('.mui-bar-tab').on('tap', 'a.mui-tab-item', function(e) {
+					var _self = this;
+					var targetTab = _self.getAttribute('data-id');
+					if(targetTab === activeTab) {
+						return;
+						
+					} 
+					titleEL.innerText = _self.querySelector('.mui-tab-label').innerText;
+					var _subWv = plus.webview.getWebviewById(targetTab);
+				 
+					console.log(targetTab);
+ 					// 若webview不存在，则创建；
+				 if(targetTab!=="camera"){
+				 		var _subInfo = getSubInfoById(subInfos, targetTab);
+						_subWv = plus.webview.create(_subInfo.url, _subInfo.id, subStyles);
+						mainWv.append(_subWv);
+							// 隐藏之前的webview
+					plus.webview.getWebviewById(activeTab).hide('none');
+					activeTab = targetTab;
+					
+				 }
+
+				
+				});
+			});
+			
+			
+			
+		</script>
+		
+				<script>
+			var cmr = plus.camera.getCamera();
 	
 	function stopCapture(){
   //  console.log("stopCapture");
@@ -153,93 +185,7 @@ function onPlusReady() {
 	 });
 	// 停止摄像
 
-</script>
-
-<script>
-		mui.getJSON('http://whois8.cn/getindex.php',null,function(data){
-		       //数据绑定在此处
-	           var list2 = document.getElementById("main_page_restaurant");
-	         
-		       mui.each(data,function(index,item){
-    
-                    list2.innerHTML +=  '<div class="main_page_restaurant_video"><video onload="vload(this)" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
-                                        '<div class="restaurant_info"><div class="like-info">'+
-					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><100m</span>'+
-					'<span class="restaurant_type">'+item[2]+' Food</span><img src="img/icon/like.png" class="like-restaurant"/></div>'+
-				    '<div class="dislike-info"><img src="img/icon/friends.png" class="friends_num" id="'+item[0]+'"/>'+
-					'<span class="friends_num"><a href="#">5</a> Friends</span><img src="img/icon/cross.png" class="dislike-restaurant" /></div>'+
-				    '<div style="clear: both;"></div></div>';
-                })
-		      
- 
-	        });	
-mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
-   //获取id
-  var id = this.getAttribute("id");
-  //console.log(id);
-                mui.openWindow({
-                  url: 'restaurant_info.html',
-                  id: 'restaurant_info',
-                  extras:{
-                    shopid:id
-                  }  
-                });
-  
- })
-mui("#main_page_restaurant").on('tap','.friends_num',function(){
-   //获取id
-  var id = this.getAttribute("id");
- // console.log(id);
-                mui.openWindow({
-                  url: 'friend_videos.html',
-                  id: 'friend_videos',
-                  extras:{
-                    shopid:id
-                  }  
-                });
-  
- })
-
-mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
-   //获取id
-  var id = this.getAttribute("id");
-  //console.log(id);
-                mui.openWindow({
-                  url: 'restaurant_info.html',
-                  id: 'restaurant_info',
-                  extras:{
-                    shopid:id
-                  }  
-                });
-  
- })
-	
-	
-</script>
-<script type="text/javascript">
-(function(){
-var video, output;
-var scale = 0.8;
-var initialize = function() {
-output = document.getElementById("output");
-video = document.getElementById("video");
-video.addEventListener('loadeddata',captureImage);
-};
- 
-var captureImage = function() {
-            var canvas = document.createElement("canvas");
-            canvas.width = video.videoWidth * scale;
-            canvas.height = video.videoHeight * scale;
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
- 
-            var img = document.createElement("img");
-            img.src = canvas.toDataURL("image/png");
-            output.appendChild(img);
-};
- 
-initialize();
-})();
-</script>
-
+		</script>
+	</body>
 
 </html>
