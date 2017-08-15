@@ -9,95 +9,82 @@
     <link href="css/mui.min.css" rel="stylesheet"/>
     <link href="css/moment_main.css" rel="stylesheet"/>
     <link href="css/main_page.css" rel="stylesheet"/>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-    </script>
+ 	<style>
+			.mui-control-content {
+				background-color: white;
+				min-height: 215px;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+			.mui-bar{
+              background-color: #f18c3c;
+          }
+		</style>
 </head>
 <body>
-	<div id="main" class="sign_content">
-		<!--  Top Templete  Start -->
-		<div id="top_bar">
-			<div id="app_name" class="top_frame">
-				<div id="app_name_div">
-					<span>Meet with Restaurant</span>
-					<img src="img/icon/top_menu.png" alt="top_menu" id="top_menu">
-					<img src="img/icon/edit.png" alt="edit" id="filter">
-				</div>
-			</div>
-		</div>
-		<!--  Top Templete  End -->
-		
-		<div id="select_moment_type">
-			<div id="select_moment_nearby" class="select_moment_type">
-				<span class="select_moment_span clicked" id="nearby">NEARBY</span>
-			</div>
-			<div id="select_moment_following" class="select_moment_type">
-				<span class="select_moment_span not_clicked" id="following">FOLLOWING</span>
-			</div>
-			<div style="clear: both;"></div>
-		</div>
-		<script language="JavaScript">
-			window.onload=function(){
-				var nearby_templetes=document.getElementsByClassName("nearby");
-				var following_templetes=document.getElementsByClassName("following");
-				for (var i=0;i<nearby_templetes.length;i++){
-					nearby_templetes.item(i).style.display="block";
-				}for (var i=0;i<following_templetes.length;i++){
-					following_templetes.item(i).style.display="none";
-				}
-			}
-			var nearby_templetes=document.getElementsByClassName("nearby");
-			var following_templetes=document.getElementsByClassName("following");
-			document.getElementById('nearby').style.fontWeight="bold";
-			document.getElementById('nearby').style.borderBottom="3px #F18C3C solid";
-			document.getElementById('following').style.fontWeight="lighter";
-			document.getElementById('following').style.border="none";
-			mui("#select_moment_type").on('tap','.select_moment_type',function(){
-				//获取id
-				//var id = this.getAttribute("id");
-				//alert(id);
-				var id=this.getElementsByTagName("span").item(0).getAttribute("id");
-				if(id == 'nearby'){
-					document.getElementById(id).style.fontWeight="bold";
-					document.getElementById(id).style.borderBottom="3px #F18C3C solid";
-					document.getElementById('following').style.fontWeight="lighter";
-					document.getElementById('following').style.border="none";
-					for (var i=0;i<nearby_templetes.length;i++){
-						nearby_templetes.item(i).style.display="block";
-					}for (var i=0;i<following_templetes.length;i++){
-						following_templetes.item(i).style.display="none";
-					}
-				}else{
-					document.getElementById(id).style.fontWeight="bold";
-					document.getElementById(id).style.borderBottom="3px #F18C3C solid";
-					document.getElementById('nearby').style.fontWeight="lighter";
-					document.getElementById('nearby').style.border="none";
-					for (var i=0;i<nearby_templetes.length;i++){
-						nearby_templetes.item(i).style.display="none";
-					}for (var i=0;i<following_templetes.length;i++){
-						following_templetes.item(i).style.display="block";
-					}
-				}
-			})
-		</script>
-		
-<div id="OA_task_1">
-		<!--  Near By Templete  -->
 	
- 
- </div>
+	
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+			<!--侧滑菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+ 						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									收藏夹
+								</a>
+							</li>
+						
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!--主界面部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right" id="filter"><span class="mui-icon mui-icon-camera"></span></a>
+					<h1 class="mui-title">Meet with Restaurant</h1>
+				</header>
 		
-<div id="OA_task_2">		
-		<!--  Following Templete  -->
- </div>
+		 
+		<!--  Top Templete  End -->
+		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper" >
+	
+          <div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+					<a class="mui-control-item " href="#item1mobile">
+				FOLLOW
+			</a>
+					<a class="mui-control-item" href="#item2mobile">
+				FOLLOWING
+			</a> 
+			</div>
+			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-6"></div>
+			
+			</div>
+	           <div class="mui-slider-group">
+					<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+						<div id="scroll1">
+							   <div id="OA_task_1"> </div>
+						</div>
+					</div>
  
+					<div id="item2mobile" class="mui-slider-item mui-control-content">
+						<div id="scroll2" > 
+						  <div id="OA_task_2"></div>
+						</div>
+					</div>
+				</div>
+		</div>
 	</div>
+</div>
+ 
 </body>
 <script language="JavaScript">
-	var h = document.documentElement.clientHeight;
-	var w = document.documentElement.clientWidth;
-	document.getElementById("main").style.height=h+"px";
-	document.getElementById("main").style.width=w+"px";
+ mui.init();
 	var uid = localStorage.getItem('user_id');
 	var all=0;
 	var sel=1;
@@ -163,13 +150,8 @@ function onPlusReady() {
                 //录像
                 plus.io.resolveLocalFileSystemURL(p, function(entry) {
                 //通过URL参数获取目录对象或文件对象 就是获取到录像文件位置    
-                //console.log(p);//打印文件位置，可以直接用作上传路径
-               
-                //console.log(uid);
-                //document.getElementById('videoshow').src=p;
-                  
-                var arr = p.split('/');
-		 
+
+                var arr = p.split('/');		 
                 var filename=(new Date()).valueOf()+arr[arr.length-1];
                 
                  var task = plus.uploader.createUpload( "http://whois8.cn/upvideo.php", 
