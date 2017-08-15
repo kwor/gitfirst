@@ -9,9 +9,7 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">首页</h1>
-		</header>
+	
 		<nav class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item mui-active" data-id="home">
 				<span class="mui-icon mui-icon-home"></span>
@@ -53,7 +51,7 @@
 					id: 'user_center'
 				}];
 				var subStyles = {
-					top: '45px',
+					top: '0px',
 					bottom: '51px'
 				};
 
@@ -71,8 +69,8 @@
 				};
 
 				var mainWv = plus.webview.currentWebview();
-				var titleEL = document.querySelector('.mui-title');
-				var activeTab = '';
+				//var titleEL = document.querySelector('.mui-title');
+				//var activeTab = '';
 
 				// 默认只加载首页webview
 				var homeWv = plus.webview.create(subInfos[0].url, subInfos[0].id, subStyles);
@@ -87,7 +85,7 @@
 						return;
 						
 					} 
-					titleEL.innerText = _self.querySelector('.mui-tab-label').innerText;
+					//titleEL.innerText = _self.querySelector('.mui-tab-label').innerText;
 					var _subWv = plus.webview.getWebviewById(targetTab);
 				 
 					console.log(targetTab);
