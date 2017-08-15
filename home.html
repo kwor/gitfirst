@@ -39,14 +39,11 @@
 			input {
 				color: #000;
 			}
+			.mui-bar{
+              background-color: #f18c3c;
+          }
 		</style>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-      	 $(document.body).css({
-      	 	"overflow-x":"hidden",
-      	 	"overflow-y":"hidden"
-      	 });
-    </script>
+
 </head>
 <body>
 	
@@ -70,15 +67,15 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right">拍照</a>
+					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"><span class="mui-icon mui-icon-camera"></span></a>
 					<h1 class="mui-title">Meet with Restaurant</h1>
 				</header>
 		
 		 
 		<!--  Top Templete  End -->
 		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
-					<div class="mui-scroll">
-		 <div id="main_page_search">
+		<div class="mui-scroll">
+		 <div style="margin-top: 3px;">
 			<div class="mui-input-row mui-search">
 				<input type="search" id="search_input" class="mui-input-clear" placeholder="Search restaurant...">
 			</div>
@@ -87,7 +84,8 @@
 	    <div class="mui-off-canvas-backdrop"></div>
 			</div>
 		</div>
-	</div></div>
+	</div>
+</div>
 	
 </body>
  
