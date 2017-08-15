@@ -37,27 +37,40 @@
 			</div>
 		</div>
 		
-		<div id="main_page_restaurant" class="mui-scroll">
-			
-			
-			
-			
-			
+<video id="video" controls="controls">
+<source src="http://whois8.cn/files/1502381710889video_061.mov">
+</video>
+<div id="output"></div>
 
+
+
+
+		<div id="main_page_restaurant" class="mui-scroll">
+ 
 			
 		</div>
 		
 		
 		<!--  Bottom Templete Start  -->
-		<div id="bottom_menu">
-			<ul id="bottom_ul_menu">
-				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
-				<li><img src="img/icon/message.png" onclick="window.location.href='chat_list.html'"></li>
-				<li id="cvideo"><img src="img/icon/create.png"></li>
-				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
-				<li><img src="img/icon/menu_user.png" onclick="window.location.href='user_center.html'"></li>
-			</ul>
-		</div>
+ 
+			<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat" id="cvideo">
+				<span class="mui-icon mui-icon-email"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">通讯录</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
 		<!--  Bottom Templete End  -->
 	</div>
 </body>
@@ -203,31 +216,29 @@ mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
 	
 	
 </script>
- <script type="text/javascript">//--获取视频缩略图--
-            function vload(obj) {
-            	console.log("111");
-                $(obj).removeAttr("poster");
-                var vimg = $("<img/>")[0];
-                captureImage(obj, vimg);
-                $(obj).after(vimg);
-                $(obj).remove();
-                
-            };
-            var scale = 0.8; //缩放
-            function captureImage(video, output) { //截图 
-                try {
-                    var videocanvas = $("<canvas/>")[0];
-                    videocanvas.width = video.videoWidth * scale;
-                    videocanvas.height = video.videoHeight * scale;
-                    videocanvas.getContext('2d').drawImage(video, 0, 0, videocanvas.width, videocanvas.height);
-                    output.src = videocanvas.toDataURL("image/png");
-                    delete videocanvas;
-                } catch(e) {
-                    output.src = "加载动画.gif";
-                }
+<script type="text/javascript">
+(function(){
+var video, output;
+var scale = 0.8;
+var initialize = function() {
+output = document.getElementById("output");
+video = document.getElementById("video");
+video.addEventListener('loadeddata',captureImage);
+};
  
-            };
-            //--获取视频缩略图--
+var captureImage = function() {
+            var canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth * scale;
+            canvas.height = video.videoHeight * scale;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+ 
+            var img = document.createElement("img");
+            img.src = canvas.toDataURL("image/png");
+            output.appendChild(img);
+};
+ 
+initialize();
+})();
 </script>
 
 
