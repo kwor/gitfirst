@@ -19,6 +19,7 @@
 /*  Search  */
 #main_page_search{width: 90%; margin: 0 auto; margin-top: 11.25vh;}
 #search_input{border:#F18C3C 3px solid; }
+#search{width: 90%; margin-left: 5%;}
 
 /*Restaurant Info*/
 #main_page_restaurant{width: 90%; margin-left: 5%; position: relative;}

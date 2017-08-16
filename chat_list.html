@@ -29,6 +29,10 @@
           	.mui-table-view-cell:last-child:before{height: 0;}
           	.mui-navigate-right:after, .mui-push-right:after{content: none;}
           	.mui-bar-nav.mui-bar .mui-icon{font-weight: bold; color: #FFFFFF;}
+          	.mui-segmented-control.mui-segmented-control-inverted .mui-control-item.mui-active{color: #F18C3C; font-weight: bold;}
+          	
+          	#OA_task_1,#OA_task_2{margin-top: 0;}
+          	#item1mobile,#item2mobile{min-height: 1000px;}
 		</style>
 </head>
 <body>
@@ -89,14 +93,13 @@
 	
           <div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
-					<a class="mui-control-item " href="#item1mobile">
+					<a class="mui-control-item mui-active " href="#item1mobile">
 				FOLLOW
 			</a>
 					<a class="mui-control-item" href="#item2mobile">
 				FOLLOWING
 			</a> 
 			</div>
-			<div id="sliderProgressBar" class="mui-slider-progress-bar mui-col-xs-12"></div>
 			
 			</div>
 	           <div class="mui-slider-group">
@@ -130,13 +133,13 @@
 		       mui.each(data,function(index,item){
            
                     li = document.createElement('li');
-                    li.className = 'mui-table-view-cell';
+                    li.className = 'mui-table-view-cell chat_list_user_info';
                     li.id=item[0];
                     //console.log(data5);
                     li.innerHTML =      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>'+
                                         '<div class="mui-slider-handle" id='+item[1]+'><span class="user_headImg"><img src="img/icon/user_headImg.png" /></span>'+
-                                        '<span class="user_info"><p>'+item[1]+'</p><a>'+item[2]+'</a></span>'+
-                                        '</div>';
+                                        '<span class="user_info"><p>'+item[1]+'</p><a>'+item[2]+'</a></span></div>'+
+                                        '<div style="clear:both;"></div>';
                     fragment.appendChild(li);
                  
                 })

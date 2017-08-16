@@ -24,7 +24,7 @@
 .moment_share span, .moment_comment span{display: block; height: 7vh; line-height: 7vh; color: #a1a1a1;}
 
 .chat_list_user_info{height: 25vw; border-bottom: 1px #888888 solid;}
-.user_headImg{height: 20vw; width: 20vw;margin-top: 2.5vw; float: left;}
+.user_headImg{height: 20vw; width: 20vw;float: left;}
 .user_headImg img{width: 20vw; height: 20vw; -moz-border-radius: 10vw; -webkit-border-radius: 10vw; border-radius: 10vw;}
 .user_info{display: block; float: left; height: 10vw; margin-top: 7.5vw; margin-left: 3vw;}
 .user_info p{font-size: 1.35rem; margin-bottom: 3px; color: #3d3d3d;}
