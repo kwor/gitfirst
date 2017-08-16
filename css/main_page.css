@@ -6,27 +6,38 @@
 #filter{height: 5vh; position: absolute; right: 1.75vh;}
 #app_name span{color: #FFFFFF; font-size: 1.4rem; height: 5vh; line-height: 5vh;}
 #_app_name span{color: #FFFFFF; font-size: 1.4rem;}
+#top_title,#iusername{color: #FFFFFF; font-weight: bold;}
+
+/*Left Menu*/
+#offCanvasSide{background: #f18c3c;}
+#left_menu{margin-top: 6vh;}
+#left_menu ul{text-align: left;}
+#left_menu ul li{height: 60px; background: #F18C3C;  line-height: 60px; margin: 0; padding: 0;}
+#left_menu ul li a{margin: 0; font-size: 1.35rem; font-weight: bold; padding-left: 20px;}
+
 
 /*  Search  */
 #main_page_search{width: 90%; margin: 0 auto; margin-top: 11.25vh;}
 #search_input{border:#F18C3C 3px solid; }
 
 /*Restaurant Info*/
-#main_page_restaurant{width: 90%; margin-left: 5%;}
-.main_page_restaurant_video{width: 100%;}
+#main_page_restaurant{width: 90%; margin-left: 5%; position: relative;}
+.main_page_restaurant_video{width: 100%; position: relative; text-align: center;}
+.main_page_restaurant_video video{height: 50vh;}
+.video_img{position: absolute; z-index: 999; left: 0; height: 50vh;}
 .main_page_restaurant_video img{width: 100%;}
 .restaurant_info{width: 100%;}
 .like-info{float: left; width: 48%;  text-align: left; position: relative;}
 .restaurant_name{display: block; margin: 2% auto; margin-left: 5%; color: #F18C3C; font-family: "serif"; font-size: 1.5rem;}
 .restaurant_distance{display: block; margin: 2% auto; margin-left: 5%; color: #000000; font-weight: bold; font-size: 1.2rem;}
 .restaurant_type{ display: block; margin: 2% auto; margin-left: 5%; color: #000000; font-weight: bold; font-size: 1.2rem;}
-.like-restaurant{width: 35%; position: relative; left: 25%; margin-top: 5%;}
+.like-restaurant{width: 18vw; position: absolute; left: 5vw; margin-top: 5%;}
 
-.dislike-info{float: right; width: 48%; text-align: right;}
+.dislike-info{float: right; width: 48%; text-align: right; position: relative;}
 .friends_num{width: 70%; margin-right: 5%;}
 .friends_num a{text-decoration: none;}
 .dislike-info span{display:block; margin-right: 0%;}
-.dislike-restaurant{width: 35%; position: relative; right: 25%; margin-top: 5%;}
+.dislike-restaurant{width: 18vw; position: absolute; right: 5vw; margin-top: 5%;}
 
 /*  Restaurant Info HTML  */
 #restaurant_html_top_info_div{position: relative;  width: 100%;border-bottom: #dadada 2px solid; left: 0;}

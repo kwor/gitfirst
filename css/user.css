@@ -1,6 +1,6 @@
 /*  User  */
 
-#user_info{width: 100%; background: #FFFFFF; margin-top: 13vh;}
+#user_info{width: 100%; background: #FFFFFF; margin-top: 1vh;}
 #user_headImg{ width: 100%; text-align: center; position: relative;}
 #user_headImg img{width: 25vw; height: 25vw; -moz-border-radius: 12.5vw; -webkit-border-radius: 12.5vw; border-radius: 12.5vw;}
 #user_following_info{width: 100%; height: 8vh; position: relative; margin-top: 3vh;}
@@ -14,3 +14,4 @@
 .other_ops{background: #fdf4ed; height: 5vh;}
 #other_ops .other_ops span{float: left; line-height: 5vh;}
 #other_ops .other_ops span img{width:5vw ; height: auto;}
+#other_ops{}

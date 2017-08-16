@@ -21,7 +21,7 @@
 	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title" style="font-size:1.5rem;">发朋友圈</h1>
- </header>
+    </header>
 		<!--  Top Templete  End -->
 
 		<!--  Near By Templete  -->
@@ -33,16 +33,7 @@
 		</textarea>
 		<button id="stalk">发布</button>
 		
-		<!--  Bottom Templete Start  -->
-		<div id="bottom_menu">
-			<ul id="bottom_ul_menu">
-				<li><img src="img/icon/home.png" onclick="window.location.href='main_page.html'"></li>
-				<li><img src="img/icon/message.png" onclick="window.location.href='chat_list.html'"></li>
-				<li><img src="img/icon/create.png"></li>
-				<li><img src="img/icon/moment.png" onclick="window.location.href='moment.html'"></li>
-				<li><img src="img/icon/user2.png" onclick="window.location.href='user_center.html'"></li>
-			</ul>
-		</div>
+	 
 		<!--  Bottom Templete End  -->
 	</div>
 </body>
@@ -62,17 +53,7 @@
 	    },function(data){
 	    
 	        mui.alert(data);
-	       if(data=="success"){
 
-	       		 mui.openWindow({
-                  url: 'moment.html',
-                  id: 'moment'
-                   
-                })
-	       } 
-	       
-          //  document.getElementById("OA_task_1").innerHTML+="<br/>我说:"+content;
-	    
 	     },'text'
        );
 	 });

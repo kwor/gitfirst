@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/sign_in_up.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+    <style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			p {
+				text-indent: 22px;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-off-canvas-left {
+				color: #fff;
+			}
+			.title {
+				margin: 35px 15px 10px;
+			}
+			.title+.content {
+				margin: 10px 15px 35px;
+				color: #bbb;
+				text-indent: 1em;
+				font-size: 14px;
+				line-height: 24px;
+			}
+			input {
+				color: #000;
+			}
+			.mui-bar{
+              background-color: #f18c3c;
+          	}
+          	.mui-icon-camera:before{font-size: 2.5rem;}
+          	.mui-table-view-inverted:after,
+          	.mui-table-view-cell:last-child:after,
+          	.mui-table-view-inverted .mui-table-view-cell:after,
+          	.mui-table-view-cell:last-child:before{height: 0;}
+          	.mui-navigate-right:after, .mui-push-right:after{content: none;}
+          	.mui-bar-nav.mui-bar .mui-icon{font-weight: bold; color: #FFFFFF;}
+          	.video_list_li{display: none; z-index: 99;}
+		</style>
+
+</head>
+<body>
+	
+		<div id="offCanvasWrapper" class="mui-off-canvas-wrap mui-draggable">
+			<!--侧滑菜单部分-->
+			<aside id="offCanvasSide" class="mui-off-canvas-left">
+				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+					<div class="mui-scroll" id="left_menu">
+ 						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									首&nbsp;&nbsp;&nbsp;&nbsp;页
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									搜&nbsp;&nbsp;&nbsp;&nbsp;索
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									收&nbsp;&nbsp;藏&nbsp;&nbsp;夹
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									视&nbsp;&nbsp;&nbsp;&nbsp;频
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									档&nbsp;&nbsp;&nbsp;&nbsp;案
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									设&nbsp;&nbsp;&nbsp;&nbsp;置
+								</a>
+							</li>
+						
+						</ul>
+					</div>
+				</div>
+			</aside>
+			<!--主界面部分-->
+			<div class="mui-inner-wrap">
+				<header class="mui-bar mui-bar-nav">
+					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
+					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"><span class="mui-icon mui-icon-camera"></span></a>
+					<h1 class="mui-title" id="top_title">Meet with Restaurant</h1>
+				</header>
+		
+		 
+		<!--  Top Templete  End -->
+		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+		 <div style="margin-top: 3px;">
+			<div class="mui-input-row mui-search">
+				<input type="search" id="search_input" class="mui-input-clear" placeholder="Search restaurant...">
+			</div>
+		</div>
+		<div id="main_page_restaurant" class="mui-scroll"></div>
+	    <div class="mui-off-canvas-backdrop"></div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+</body>
+ 
+
+<script>
+		mui.getJSON('http://whois8.cn/getindex.php',null,function(data){
+		       //数据绑定在此处
+	           var list2 = document.getElementById("main_page_restaurant");
+	         
+		       mui.each(data,function(index,item){
+    
+                    list2.innerHTML +='<div class="video_list_li" id="'+index+'">'+
+                    '<div class="main_page_restaurant_video">'+
+                    '<img class="video_img" src="img/pic/videoshot.png" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
+                    '<div class="restaurant_info">'+
+                    '<div class="like-info">'+
+					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><100m</span>'+
+					'<span class="restaurant_type">'+item[2]+' Food</span></div>'+
+				    '<div class="dislike-info"><img src="img/icon/friends.png" class="friends_num" id="'+item[0]+'"/>'+
+					'<span class="friends_num"><a href="#">5</a> Friends</span></div>'+
+				    '<div style="clear: both;"></div>'+
+				    '<img src="img/icon/like.png" class="like-restaurant"/>'+
+				    '<img src="img/icon/cross.png" class="dislike-restaurant" />'+
+				    '</div></div>';
+				    
+				    
+				    var lis = $(".video_list_li");
+				    lis.eq(0).css("display","block");
+				    lis.on("swipeleft", function(){
+				    	var total_num=$(".video_list_li").length;
+				    	var now=$(this).attr("id");
+				    	if(now==total_num){now=0;}
+				    	$(this).fadeToggle(500);
+				    	
+				    	function show_next(){
+				    		$(".video_list_li").eq(now).css("display","block");
+				    	}
+				    	setTimeout(show_next,600);
+				    	//console.log(now);
+				    });
+				    
+				    var videos = $(".video_img");
+				    videos.on("tap", function(){
+				    	var obj = $(this);
+				    	//obj.hide();
+				    	var _id = $(this).data("id");
+				    	var video = document.getElementById("video_"+_id);
+				    	video.play();
+				    	video.addEventListener("ended",function(){
+				    		//console.log("finished");
+				    		obj.show();
+				    	});
+				    });
+				    
+                })
+		      
+ 
+	        });	
+mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
+   //获取id
+  var id = this.getAttribute("id");
+  //console.log(id);
+                mui.openWindow({
+                  url: 'restaurant_info.html',
+                  id: 'restaurant_info',
+                  extras:{
+                    shopid:id
+                  }  
+                });
+  
+ })
+mui("#main_page_restaurant").on('tap','.friends_num',function(){
+   //获取id
+  var id = this.getAttribute("id");
+ // console.log(id);
+                mui.openWindow({
+                  url: 'friend_videos.html',
+                  id: 'friend_videos',
+                  extras:{
+                    shopid:id
+                  }  
+                });
+  
+ })
+
+mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
+   //获取id
+  var id = this.getAttribute("id");
+  //console.log(id);
+                mui.openWindow({
+                  url: 'restaurant_info.html',
+                  id: 'restaurant_info',
+                  extras:{
+                    shopid:id
+                  }  
+                });
+  
+ })
+	
+	
+</script>
+
+
+</html>
