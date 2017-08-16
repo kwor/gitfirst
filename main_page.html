@@ -144,17 +144,14 @@ function onPlusReady() {
 		function ( t, status ) {
 			// 上传完成
 		if ( status == 200 ) {
-		//提交本局数据
-        mui.post('http://whois8.cn/addvideo.php',{
-		vurl:filename,
-		uid:uid
-	     },function(data){
-		//服务器返回响应，根据响应结果，分析是否登录成功；
-		 clearTimeout(timer);
-		 alert(data);
-	     },'text'
-        );
- 
+		console.log(filename);
+		 mui.openWindow({
+                  url: 'video_content.html',
+                  id: 'video_content',
+                  extras:{
+                    video:filename
+                  }  
+               })
 			} else {
 				alert( "短片上传失败: " + status );
 			}

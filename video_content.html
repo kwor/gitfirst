@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/moment_main.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+   
+    <style type="text/css">
+    	#app_name .mui-icon .mui-icon-clear .mui-hidden{line-height: 3vh;}
+    </style>
+</head>
+<body>
+
+	<div id="main" class="sign_content mui-content">
+		<!--  Top Templete  Start -->
+	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;">餐厅视频</h1>
+    </header>
+		<!--  Top Templete  End -->
+
+		<!--  Near By Templete  -->
+        <video id="videourl" src="" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">
+			 	Your browser does not support the video tag.</video>
+		
+		<select id="shopid"></select>
+		<button id="stalk">发布</button>
+		
+	 
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+
+	var uid = localStorage.getItem('user_id');
+	var self = plus.webview.currentWebview();
+    var video = self.video;
+    document.getElementById('videourl').src="http://whois8.cn/files/"+video;
+    
+   
+		mui.getJSON('http://whois8.cn/getshoplist.php',null,function(data){
+		       //数据绑定在此处
+	           var shopid = document.getElementById("shopid");
+	         
+		       mui.each(data,function(index,item){
+		          shopid.innerHTML+='<option value ="'+item[0]+'">'+item[1]+'</option>';
+		       })
+		      
+ 
+	        });	
+	document.getElementById('stalk').addEventListener('tap', function() {
+		
+	var shopid=document.getElementById('shopid').value;
+	//console.log(shopid);
+	mui.post('http://whois8.cn/addvideo.php',{
+		uid:uid,
+		video:video,
+		shopid:shopid
+	    },function(data){
+	    
+	        mui.alert(data);
+
+	     },'text'
+       );
+	 });
+	 
+
+
+</script>
+</html>
