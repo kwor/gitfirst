@@ -7,11 +7,12 @@
 .following_info{width: 33%; height: 8vh; float: left;}
 .following_info span{display: block; height: 4vh; width: 100%; text-align: center;}
 #user_videos{width: 100%; height: auto; padding-bottom: 7.5vh;}
-#user_videos img{width: 45%; float: left; margin-left: 3.3%; margin-top: 1vh;}
+.user_videos_img{width: 45%; height: 25vh; position: relative; text-align: center; float: left; margin-left: 3.3%; margin-top: 1vh;}
+.user_videos_img video{height: 25vh; position: absolute; left: -25%;}
+.video_img_user{position: absolute; z-index: 999; left: 0; height: 25vh;}
 #other_user_info{position: absolute; top: 0; left: 33vw;}
 #other_user_info span{display: block; width: 100%; height: 8vw; line-height: 8vw;}
 #other_ops{ width: 30vw; position: absolute; top: 0; right: 5vw;}
 .other_ops{background: #fdf4ed; height: 5vh;}
 #other_ops .other_ops span{float: left; line-height: 5vh;}
 #other_ops .other_ops span img{width:5vw ; height: auto;}
-#other_ops{}

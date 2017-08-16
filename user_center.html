@@ -120,10 +120,21 @@
 	           var user_videos= document.getElementById('user_videos');
 		       mui.each(data,function(index,item){
 		      // console.log(item[1]);
-               user_videos.innerHTML+="<video onloadeddata='show_pic()' src='http://whois8.cn/files/"+item[1]+"'>播放器</video>";
-               function show_pic(){
-               	mui.alert(1);
-               }
+               user_videos.innerHTML+='<div class="user_videos_img">'+
+               						  '<img class="video_img_user" src="img/pic/videoshot.png" data-id="'+index+'"/>'+
+               						  '<video id="video_'+index+'"  src="http://whois8.cn/files/"'+item[1]+'">播放器</video></div>';
+               var videos = $(".video_img_user");
+				    videos.on("tap", function(){
+				    	var obj = $(this);
+				    	//obj.hide();
+				    	var _id = $(this).data("id");
+				    	var video = document.getElementById("video_"+_id);
+				    	video.play();
+				    	video.addEventListener("ended",function(){
+				    		//console.log("finished");
+				    		obj.show();
+				    	});
+				    });
                })
 		});  
     </script>

@@ -13,8 +13,9 @@
 .moment_content_templete_top span{height: 3vh; line-height:3vh; display: block; overflow: hidden;}
 .moment_user_headImg{ height: 7vh; margin-top: 1.5vh; float: left; margin-left: 3vh; }
 .more_icon{width: 8vw; position: absolute; right: 6vw; top: 5vh;}
-.monent_video{width: 100%;}
-.monent_video img{width: 100%;}
+.moment_video{position: relative; text-align: center; width: 100%;}
+.moment_video img{width: 100%; }
+.moment_video video{height: 50vh;}
 .moment_content{width: 94%; margin-left: 3%; position: relative; padding-bottom: 10vw; border-bottom: 2px #f7f7fb solid;}
 .moment_tag{background: #d8d8d8; border-radius: 3vw; position: absolute; bottom: 0.5vh; right: 0; color: #989898; padding-left: 2vw; padding-right: 2vw;}
 .moment_share_comment{height: 7vh; width: 100%;}
