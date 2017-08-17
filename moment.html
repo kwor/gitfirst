@@ -145,15 +145,7 @@
                
                		var moments = $(".moment_content_templete_nearby");
                		moments.eq(0).css("display","block");
-   mui("#OA_task_1").on('tap','.moment_share',function(){
-   //获取id
-  var id = this.getAttribute("id");
-  mui.alert(id);
-  
-     
-           
-  
- })
+ 
                		moments.on("swipeup", function(){
 				    	var total_num=$(".moment_content_templete_nearby").length;
 				    	var now=$(this).attr("id");
@@ -198,7 +190,19 @@
 				    });
 		       })
 		      
+   mui("#OA_task_1").on('tap','.moment_share',function(){
+   //获取id
+  var id = this.getAttribute("id");
+  		 mui.openWindow({
+                  url: 'moment_content_ref.html',
+                  id: 'moment_content_ref',
+                  extras:{
+                    spaceid:id
+                  }  
+               })
  
+
+ })
 	        });
 		mui.getJSON('http://whois8.cn/getspacelist.php',{uid:uid,tp:sel},function(data){
 		       //数据绑定在此处
@@ -251,7 +255,7 @@ function onPlusReady() {
 		function ( t, status ) {
 			// 上传完成
 		if ( status == 200 ) {
-		console.log(filename);
+		//console.log(filename);
 		 mui.openWindow({
                   url: 'moment_content.html',
                   id: 'moment_content',

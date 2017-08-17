@@ -13,7 +13,20 @@
 	
 	$res=mysqli_query($dbconn,$sql);
 	if($res){
-		echo "success";
+		
+		if($fromspaceid!=0){
+			$sql1="update kfspace_video set follow_num=follow_num+1 where id=".$fromspaceid;
+			$res1=mysqli_query($dbconn,$sql1);
+			if($res1){
+				echo "success";
+			}else{
+				echo "update num error";
+			}
+		}else{
+			echo "success";
+		}
+		
+		
 	}else{
 		echo "error";
 	}

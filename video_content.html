@@ -41,8 +41,7 @@
 	var self = plus.webview.currentWebview();
     var video = self.video;
     document.getElementById('videourl').src="http://whois8.cn/files/"+video;
-    
-   
+
 		mui.getJSON('http://whois8.cn/getshoplist.php',null,function(data){
 		       //数据绑定在此处
 	           var shopid = document.getElementById("shopid");
