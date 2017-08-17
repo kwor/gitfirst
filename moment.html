@@ -139,13 +139,21 @@
                                         '<div class="moment_video">'+
                                         '<img class="video_img" src="img/pic/videoshot.png" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[4]+'">播放器</video></div>'+
                                         '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">All day breakfast</span></div>'+
-                                        '<div class="moment_share_comment"><div class="moment_share"><img src="img/icon/share_black.png" />'+
+                                        '<div class="moment_share_comment"><div class="moment_share" id="'+item[5]+'"><img src="img/icon/share_black.png" />'+
 					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment">'+
 					                    '<img src="img/icon/comment_num.png" /><span class="share_num">425</span></div></div></div>';
                
                		var moments = $(".moment_content_templete_nearby");
                		moments.eq(0).css("display","block");
-               		
+   mui("#OA_task_1").on('tap','.moment_share',function(){
+   //获取id
+  var id = this.getAttribute("id");
+  mui.alert(id);
+  
+     
+           
+  
+ })
                		moments.on("swipeup", function(){
 				    	var total_num=$(".moment_content_templete_nearby").length;
 				    	var now=$(this).attr("id");
@@ -211,7 +219,6 @@
 					                    '<img src="img/icon/comment_num.png" /><span class="share_num">425</span></div></div></div>';
                 })
 		      
- 
 	        });
 	
 	var cmr = plus.camera.getCamera();
