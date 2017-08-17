@@ -40,7 +40,25 @@
 	var uid = localStorage.getItem('user_id');
 	var self = plus.webview.currentWebview();
     var spaceid = self.spaceid;
-    
+    var talkinput= document.getElementById('talk');
+	
+	document.getElementById('stalk').addEventListener('tap', function() {
+	var content=talkinput.value;
+
+	
+	
+	 mui.post('http://whois8.cn/addspace_comment.php',{
+		uid:uid,
+		content:content,
+		spaceid:spaceid
+	    },function(data){
+	    
+	        mui.alert(data);
+
+	     },'text'
+       );
+	 });
+	 
 
 </script>
 </html>
