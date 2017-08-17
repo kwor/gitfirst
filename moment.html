@@ -207,9 +207,11 @@
  mui("#OA_task_1").on('tap','.moment_comment',function(){
    //获取id
   var id = this.getAttribute("id");
+  //console.log(id);
   		 mui.openWindow({
                   url: 'moment_content_comment.html',
                   id: 'moment_content_comment',
+                  createNew:true,
                   extras:{
                     spaceid:id
                   }  
