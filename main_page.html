@@ -109,7 +109,7 @@
 		</script>
 		
 				<script>
-			var cmr = plus.camera.getCamera();
+    var cmr = plus.camera.getCamera();
 	
 	function stopCapture(){
   //  console.log("stopCapture");
@@ -123,8 +123,8 @@ var r = null;
 function onPlusReady() {
 }
 	document.getElementById('cvideo').addEventListener('tap', function() {
-	
-	    
+	             
+	            
                 //获取相机
                 cmr.startVideoCapture(function(p) {
                 //录像
@@ -173,7 +173,9 @@ function onPlusReady() {
                 }, {
                 	
                     filename: "_doc/camera/",//文件保存目录
+                    resolution:"medium",
                     index: 2
+                    
                 });
 	             // 拍摄10s后自动完成 
                 var timer = setTimeout( stopCapture, 10000 );
