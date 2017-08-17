@@ -124,6 +124,7 @@
  
 
 <script>
+	var uid = localStorage.getItem('user_id');
 		mui.getJSON('http://whois8.cn/getindex.php',null,function(data){
 		       //数据绑定在此处
 	           var list2 = document.getElementById("main_page_restaurant");
@@ -140,7 +141,7 @@
 				    '<div class="dislike-info"><img src="img/icon/friends.png" class="friends_num" id="'+item[0]+'"/>'+
 					'<span class="friends_num"><a href="#">5</a> Friends</span></div>'+
 				    '<div style="clear: both;"></div>'+
-				    '<img src="img/icon/like.png" class="like-restaurant"/>'+
+				    '<img src="img/icon/like.png" class="like-restaurant" id="'+item[0]+'"/>'+
 				    '<img src="img/icon/cross.png" class="dislike-restaurant" />'+
 				    '</div></div>';
 				    
@@ -221,7 +222,21 @@ mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
                 });
   
  })
-	
+mui("#main_page_restaurant").on('tap','.like-restaurant',function(){
+   //获取id
+    var id = this.getAttribute("id");
+    	mui.post('http://whois8.cn/addcollection.php',{
+		uid:uid,
+		shopid:id
+	    },function(data){
+	    
+	        mui.alert(data);
+
+	     },'text'
+       );
+           
+  
+ })
 	
 </script>
 
