@@ -20,13 +20,13 @@
 		<!--  Top Templete  Start -->
 	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title" style="font-size:1.5rem;">发朋友圈</h1>
+			<h1 class="mui-title" style="font-size:1.5rem;">评论列表</h1>
     </header>
 		<!--  Top Templete  End -->
 
 		<!--  Near By Templete  -->
         
-     	
+     	<div id="OA_task_1"> </div>
 		
 		<textarea name="talk" id="talk"></textarea>
 		<button id="stalk">发布</button>
@@ -42,10 +42,29 @@
     var spaceid = self.spaceid;
     var talkinput= document.getElementById('talk');
 	
+	
+		mui.getJSON('http://whois8.cn/getspace_commentlist.php',{spaceid:spaceid},function(data){
+		       //数据绑定在此处
+		       
+	           var list = document.getElementById("OA_task_1");
+
+		       mui.each(data,function(index,item){
+           console.log(item);
+           
+                    //console.log(data5);
+                    list.innerHTML +=   '<div>时间：'+item[0]+'</div>'+
+                                        '<div>内容：'+item[1]+'</div>'+
+                                        '<div>作者：'+item[2]+'</div>'+
+                                        '<div>+++++++++++++++++++++++</div>';
+        
+                })
+		       }
+           );
+           
 	document.getElementById('stalk').addEventListener('tap', function() {
 	var content=talkinput.value;
 
-	
+
 	
 	 mui.post('http://whois8.cn/addspace_comment.php',{
 		uid:uid,

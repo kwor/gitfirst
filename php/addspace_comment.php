@@ -1,7 +1,7 @@
 <?php
 require_once("dbconn.php");
 	$uid=$_REQUEST["uid"]?$_REQUEST["uid"]:0;
-	$comment=$_REQUEST["comment"]?$_REQUEST["comment"]:0;
+	$comment=$_REQUEST["content"]?$_REQUEST["content"]:0;
 	$spaceid=$_REQUEST["spaceid"]?$_REQUEST["spaceid"]:0;
 
 	 
