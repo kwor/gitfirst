@@ -256,9 +256,11 @@ mui("#main_page_restaurant").on('tap','.like-restaurant',function(){
 	 document.getElementById('setting').addEventListener('tap', function() {
 		
 	            mui.openWindow({
-                  url: 'user_center.html',
-                  id: 'user_center.html',
-                  
+                  url: 'main_page.html',
+                  id: 'main_page',
+                  extras:{
+                    type:"user_center"
+                  }  
                 });
   
  
@@ -267,8 +269,8 @@ mui("#main_page_restaurant").on('tap','.like-restaurant',function(){
 	 	document.getElementById('index').addEventListener('tap', function() {
 		
 	            mui.openWindow({
-                  url: 'home.html',
-                  id: 'home.html',
+                  url: 'main_page.html',
+                  id: 'main_page',
                   
                 });
   

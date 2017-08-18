@@ -157,12 +157,14 @@
   
  
 	 });
-	 		document.getElementById('setting').addEventListener('tap', function() {
+	 document.getElementById('setting').addEventListener('tap', function() {
 		
 	            mui.openWindow({
-                  url: 'user_center.html',
-                  id: 'user_center.html',
-                  
+                  url: 'main_page.html',
+                  id: 'main_page',
+                  extras:{
+                    type:"user_center"
+                  }  
                 });
   
  
@@ -171,13 +173,13 @@
 	 	document.getElementById('index').addEventListener('tap', function() {
 		
 	            mui.openWindow({
-                  url: 'home.html',
-                  id: 'home.html',
+                  url: 'main_page.html',
+                  id: 'main_page',
                   
                 });
   
  
-	 });
+	 }); 
  	 
 </script>
 </html>

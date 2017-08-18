@@ -36,7 +36,12 @@
 
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
+ 	        var self = plus.webview.currentWebview();
+            var type = self.type;
 			mui.plusReady(function() {
+							
+	
+            
 				var subInfos = [{
 					url: 'home.html',
 					id: 'home'
@@ -72,10 +77,20 @@
 				//var titleEL = document.querySelector('.mui-title');
 				//var activeTab = '';
 
-				// 默认只加载首页webview
+               if(type=="user_center"){
+               	// 加载
+				var homeWv = plus.webview.create(subInfos[3].url, subInfos[3].id, subStyles);
+				mainWv.append(homeWv);
+				activeTab = subInfos[3].id;
+				
+               }else{
+                 // 默认只加载首页webview
 				var homeWv = plus.webview.create(subInfos[0].url, subInfos[0].id, subStyles);
 				mainWv.append(homeWv);
 				activeTab = subInfos[0].id;
+				
+               }
+	
 
 				// 点击切换，动态创建其它webview；
 				mui('.mui-bar-tab').on('tap', 'a.mui-tab-item', function(e) {
