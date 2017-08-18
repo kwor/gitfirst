@@ -49,26 +49,13 @@
 									首&nbsp;&nbsp;&nbsp;&nbsp;页
 								</a>
 							</li>
+							 
 							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									搜&nbsp;&nbsp;&nbsp;&nbsp;索
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
+								<a class="mui-navigate-right" id="collection">
 									收&nbsp;&nbsp;藏&nbsp;&nbsp;夹
 								</a>
 							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									视&nbsp;&nbsp;&nbsp;&nbsp;频
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									档&nbsp;&nbsp;&nbsp;&nbsp;案
-								</a>
-							</li>
+						 
 							<li class="mui-table-view-cell">
 								<a class="mui-navigate-right">
 									设&nbsp;&nbsp;&nbsp;&nbsp;置
@@ -145,7 +132,7 @@
                     li = document.createElement('li');
                     li.className = 'mui-table-view-cell chat_list_user_info';
                     li.id=item[0];
-                    li.innerHTML +=      '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>'+
+                    li.innerHTML +=     '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>'+
                                         '<div class="mui-slider-handle" id='+item[0]+'><span class="user_headImg"><img src="img/icon/user_headImg.png" /></span>'+
                                         '<span class="user_info"><p>'+item[1]+'</p><a>'+item[2]+'</a></span></div>'+
                                         '<div style="clear:both;"></div>';
@@ -269,5 +256,16 @@ mui("#OA_task_2").on('tap','.mui-table-view-cell',function(){
 					});
 				});
 			})(mui);
+			
+				document.getElementById('collection').addEventListener('tap', function() {
+		
+	            mui.openWindow({
+                  url: 'collection_list.html',
+                  id: 'collection_list',
+                  
+                });
+  
+ 
+	 });
 		</script>
 </html>

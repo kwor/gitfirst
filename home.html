@@ -66,24 +66,10 @@
 									首&nbsp;&nbsp;&nbsp;&nbsp;页
 								</a>
 							</li>
+						 
 							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									搜&nbsp;&nbsp;&nbsp;&nbsp;索
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
+								<a class="mui-navigate-right" id="collection">
 									收&nbsp;&nbsp;藏&nbsp;&nbsp;夹
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									视&nbsp;&nbsp;&nbsp;&nbsp;频
-								</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
-									档&nbsp;&nbsp;&nbsp;&nbsp;案
 								</a>
 							</li>
 							<li class="mui-table-view-cell">
@@ -199,7 +185,6 @@
         	
         }
         
-       
     },false); 
  
 mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
@@ -257,6 +242,18 @@ mui("#main_page_restaurant").on('tap','.like-restaurant',function(){
            
   
  })
+
+	document.getElementById('collection').addEventListener('tap', function() {
+		
+	            mui.openWindow({
+                  url: 'collection_list.html',
+                  id: 'collection_list',
+                  
+                });
+  
+ 
+	 });
+	 
 	
 </script>
 
