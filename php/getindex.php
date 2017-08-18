@@ -1,7 +1,12 @@
 <?php
 	require_once("dbconn.php");
- 
-	$sql="select * from kshop order by id desc";
+    $shopname=$_REQUEST["shopname"]?$_REQUEST["shopname"]:"";
+	if($shopname==""){
+		$sql="select * from kshop order by id desc";
+	}else{
+		$sql="select * from kshop where name like '%{$shopname}%' order by id desc";
+	}
+	
  
 	$query=mysqli_query($dbconn,$sql);
 	

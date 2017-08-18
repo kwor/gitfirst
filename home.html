@@ -125,12 +125,18 @@
 
 <script>
 	var uid = localStorage.getItem('user_id');
-		mui.getJSON('http://whois8.cn/getindex.php',null,function(data){
+	loadshop("");
+	var list2 = document.getElementById("main_page_restaurant");
+  
+	
+	function loadshop(shopnameval){
+		//console.log(shopnameval);
+	
+		mui.getJSON('http://whois8.cn/getindex.php',{shopname:shopnameval},function(data){
 		       //数据绑定在此处
-	           var list2 = document.getElementById("main_page_restaurant");
-	         
+	           
 		       mui.each(data,function(index,item){
-    
+   
                     list2.innerHTML +='<div class="video_list_li" id="'+index+'">'+
                     '<div class="main_page_restaurant_video">'+
                     '<img class="video_img" src="img/pic/videoshot.png" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
@@ -182,6 +188,20 @@
 		      
  
 	        });	
+	  }
+	
+  document.getElementById("search_input").addEventListener("keydown",function(e){
+    	list2="";
+        if(13 == e.keyCode){
+        	var shopnameval= document.getElementById("search_input").value;
+        	loadshop(shopnameval);
+        	//mui.alert(shopnameval);
+        	
+        }
+        
+       
+    },false); 
+ 
 mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
    //获取id
   var id = this.getAttribute("id");
