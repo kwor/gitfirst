@@ -14,17 +14,16 @@
     </script>
 </head>
 <body style="background: #FFFFFF;">
-	<div id="main" class="sign_content">
+		
+	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;"  id="unamemain">{UserName}</h1>
+    </header>
+	<div id="main" class="sign_content" style="margin-top: 50px;">
 		<!--  Top Templete  Start -->
-		<div id="top_bar">
-			<div id="app_name" class="top_frame">
-				<div id="app_name_div">
-					<span id="unamemain">{UserName}</span>
-					<img src="img/icon/top_menu.png" alt="top_menu" id="top_menu">
-					<img src="img/icon/edit.png" alt="edit" id="filter">
-				</div>
-			</div>
-		</div>
+ 
+		
+	
 		<!--  Top Templete  End -->
 		
 		<div id="user_info">
@@ -36,21 +35,21 @@
 					<span id="uphone">{UserIntro}</span>
 				</div>
 				<div id="other_ops">
-					<div class="other_ops">
+					<div class="other_ops" id="followu" style="margin-bottom: 20px;">
 						<span><img src="img/icon/follow.png"/></span>
-						<span style="margin-left: 3vw;">Follwo</span>
+						<span style="margin-left: 3vw;">Follow</span>
 						<div style="clear: both;"></div>
 					</div>
-					<div class="other_ops">
+					<div class="other_ops" id="chat">
 						<span><img src="img/icon/chat.png"/></span>
 						<span style="margin-left: 3vw;">Chat</span>
 						<div style="clear: both;"></div>
 					</div>
-					<div class="other_ops">
+					<!--<div class="other_ops">
 						<span><img src="img/icon/send.png"/></span>
 						<span style="margin-left: 3vw;">Send</span>
 						<div style="clear: both;"></div>
-					</div>
+					</div>-->
 				</div>
 			</div>
 			<div id="user_following_info">
@@ -92,6 +91,7 @@
 	document.getElementById("main").style.width=w+"px";
 </script>
 <script>
+	var uid = localStorage.getItem('user_id');
 	var self = plus.webview.currentWebview();
     var fuid = self.fuid;
 	  mui.getJSON('http://whois8.cn/getinfoforuser.php',{uid:fuid},function(data){
@@ -126,6 +126,38 @@
 		      // console.log(item[1]);
                user_videos.innerHTML+="<video src='http://whois8.cn/files/"+item[1]+"'>播放器</video>";
                })
-		});  	
+		});
+		
+		 
+	document.getElementById('chat').addEventListener('tap', function() {
+	 
+	 //console.log("chat");
+	 mui.openWindow({
+                  url: 'chat_content.html',
+                  id: 'chat_content',
+                  extras:{
+                    fuid:fuid
+                  }  
+                });
+	 
+	 });
+	 
+	document.getElementById('followu').addEventListener('tap', function() {
+	  mui.post('http://whois8.cn/addfollow.php',{
+		uid:uid,
+		followid:fuid
+	    },function(data){
+	    console.log(data);
+	        mui.alert(data);
+
+	     },'text'
+       );
+	
+	
+	 
+	 });
+	 
+	 
+	 
 </script>
 </html>
