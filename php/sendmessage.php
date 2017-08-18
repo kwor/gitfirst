@@ -4,7 +4,7 @@
 	$fuid=$_REQUEST["fuid"]?$_REQUEST["fuid"]:0;
 	$content=$_REQUEST["content"];
 	if($uid!=""&&$fuid!=""){
-			$sql = "insert into kfollowing_comment (uid,fuid,content,addtime) 
+	$sql = "insert into kfollowing_comment (uid,fuid,content,addtime) 
 	                             VALUES('$uid','$fuid','$content',now())";
 	$res=mysqli_query($dbconn,$sql);
 	if($res){
