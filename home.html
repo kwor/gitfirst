@@ -61,8 +61,8 @@
 				<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
 					<div class="mui-scroll" id="left_menu">
  						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
-							<li class="mui-table-view-cell">
-								<a class="mui-navigate-right">
+							<li class="mui-table-view-cell" id="index">
+								<a class="mui-navigate-right" >
 									首&nbsp;&nbsp;&nbsp;&nbsp;页
 								</a>
 							</li>
@@ -72,7 +72,7 @@
 									收&nbsp;&nbsp;藏&nbsp;&nbsp;夹
 								</a>
 							</li>
-							<li class="mui-table-view-cell">
+							<li class="mui-table-view-cell" id="setting">
 								<a class="mui-navigate-right">
 									设&nbsp;&nbsp;&nbsp;&nbsp;置
 								</a>
@@ -253,7 +253,27 @@ mui("#main_page_restaurant").on('tap','.like-restaurant',function(){
   
  
 	 });
+	 document.getElementById('setting').addEventListener('tap', function() {
+		
+	            mui.openWindow({
+                  url: 'user_center.html',
+                  id: 'user_center.html',
+                  
+                });
+  
+ 
+	 });
 	 
+	 	document.getElementById('index').addEventListener('tap', function() {
+		
+	            mui.openWindow({
+                  url: 'home.html',
+                  id: 'home.html',
+                  
+                });
+  
+ 
+	 }); 
 	
 </script>
 
