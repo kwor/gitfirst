@@ -12,6 +12,9 @@
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
+    <style type="text/css">
+    	.mui-bar-nav.mui-bar .mui-icon{color: #000;}
+    </style>
 </head>
 <body style="background: #FFFFFF;">
 		
@@ -124,7 +127,28 @@
 	           var user_videos= document.getElementById('user_videos');
 		       mui.each(data,function(index,item){
 		      // console.log(item[1]);
-               user_videos.innerHTML+="<video src='http://whois8.cn/files/"+item[1]+"'>播放器</video>";
+              user_videos.innerHTML+='<div class="user_videos_img">'+
+               						  '<img class="video_img_user" src="img/pic/videoshot.png" data-id="'+index+'"/>'+
+               						  '<video id="video_'+index+'"  src="http://whois8.cn/files/'+item[1]+'">播放器</video></div>';
+               var videos = $(".video_img_user");
+				    videos.on("tap", function(){
+				    	var obj = $(this);
+				    	//obj.hide();
+				    	var _id = $(this).data("id");
+				    	var video = document.getElementById("video_"+_id);
+				    	video.style.display="block";
+				    	video.play();
+				    	video.addEventListener("ended",function(){
+				    		//console.log("finished");
+				    		video.style.display="none";
+				    		obj.show();
+				    	});
+				    	video.addEventListener("pause",function(){
+				    		//console.log("finished");
+				    		video.style.display="none";
+				    		obj.show();
+				    	});
+				    });
                })
 		});
 		
