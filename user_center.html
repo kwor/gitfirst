@@ -55,7 +55,7 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"><span class="mui-icon mui-icon-compose"></span></a>
+					<a class=""><span class=""></span></a>
 					<h1 class="mui-title" id="iusername" >Meet with Restaurant</h1>
 				</header>
 	
@@ -158,10 +158,10 @@
  
 	 });
 	 document.getElementById('setting').addEventListener('tap', function() {
-		
+		console.log("setting-user");
 	            mui.openWindow({
                   url: 'main_page.html',
-                  id: 'main_page',
+                  id: 'user_setting',
                   extras:{
                     type:"user_center"
                   }  
@@ -171,11 +171,10 @@
 	 });
 	 
 	 	document.getElementById('index').addEventListener('tap', function() {
-		
+			console.log("index-user");
 	            mui.openWindow({
                   url: 'main_page.html',
-                  id: 'main_page',
-                  
+                  id: 'home_index'
                 });
   
  

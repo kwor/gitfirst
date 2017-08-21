@@ -87,7 +87,7 @@
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"><span class="mui-icon mui-icon-camera"></span></a>
-					<h1 class="mui-title" id="top_title">Meet with Restaurant</h1>
+					<h1 class="mui-title" id="top_title">遇&nbsp;见&nbsp;餐&nbsp;厅</h1>
 				</header>
 		
 		 
@@ -110,6 +110,7 @@
  
 
 <script>
+	mui.init();
 	var uid = localStorage.getItem('user_id');
 	loadshop("");
 	var list2 = document.getElementById("main_page_restaurant");
@@ -260,7 +261,7 @@ mui("#main_page_restaurant").on('tap','.dislike-restaurant',function(){
 	
 })
 
-	document.getElementById('collection').addEventListener('tap', function() {
+document.getElementById('collection').addEventListener('tap', function() {
 		
 	            mui.openWindow({
                   url: 'collection_list.html',
@@ -269,30 +270,30 @@ mui("#main_page_restaurant").on('tap','.dislike-restaurant',function(){
                 });
   
  
-	 });
-	 document.getElementById('setting').addEventListener('tap', function() {
-		
+});
+document.getElementById('setting').addEventListener('tap', function() {
+		console.log("setting-home");
 	            mui.openWindow({
                   url: 'main_page.html',
-                  id: 'main_page',
+                  id: 'home_setting',
                   extras:{
                     type:"user_center"
                   }  
                 });
   
  
-	 });
+});
 	 
-	 	document.getElementById('index').addEventListener('tap', function() {
-		
+document.getElementById('index').addEventListener('tap', function() {
+		console.log("index-home");
 	            mui.openWindow({
                   url: 'main_page.html',
-                  id: 'main_page',
+                  id: 'home_index',
                   
                 });
   
  
-	 }); 
+}); 
 	
 </script>
 

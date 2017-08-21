@@ -72,7 +72,7 @@
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
 					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right" id="filter"><span class="mui-icon mui-icon-camera"></span></a>
-					<h1 class="mui-title" id="top_title">Meet with Restaurant</h1>
+					<h1 class="mui-title" id="top_title">精&nbsp;彩&nbsp;瞬&nbsp;间</h1>
 				</header>
 		
 		 
@@ -82,10 +82,10 @@
           <div id="slider" class="mui-slider">
 				<div id="sliderSegmentedControl" class="mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 					<a class="mui-control-item mui-active " href="#item1mobile">
-				FOLLOW
+				附近
 			</a>
 					<a class="mui-control-item" href="#item2mobile">
-				FOLLOWING
+				好友
 			</a> 
 			</div>
 			
@@ -306,10 +306,10 @@ function onPlusReady() {}
  
 	 });
 		document.getElementById('setting').addEventListener('tap', function() {
-		
+			console.log("setting-moment");
 	            mui.openWindow({
                   url: 'main_page.html',
-                  id: 'main_page',
+                  id: 'moment_setting',
                   extras:{
                     type:"user_center"
                   }  
@@ -319,10 +319,10 @@ function onPlusReady() {}
 	 });
 	 
 	 	document.getElementById('index').addEventListener('tap', function() {
-		
+			console.log("index-moment");
 	            mui.openWindow({
                   url: 'main_page.html',
-                  id: 'main_page',
+                  id: 'moment_index',
                   
                 });
   
