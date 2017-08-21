@@ -134,7 +134,7 @@
 					'<span class="friends_num"><a href="#">5</a> Friends</span></div>'+
 				    '<div style="clear: both;"></div>'+
 				    '<img src="img/icon/like.png" class="like-restaurant" id="'+item[0]+'"/>'+
-				    '<img src="img/icon/cross.png" class="dislike-restaurant" />'+
+				    '<img src="img/icon/cross.png" class="dislike-restaurant" data-id="'+index+'" />'+
 				    '</div></div>';
 				    
 				    
@@ -242,6 +242,23 @@ mui("#main_page_restaurant").on('tap','.like-restaurant',function(){
            
   
  })
+
+mui("#main_page_restaurant").on('tap','.dislike-restaurant',function(){
+
+	var lis = $(".video_list_li");
+	var total_num=$(".video_list_li").length;
+	var next=$(this).data("id");
+	var now=parseInt(next)-1;
+	var now_ele=lis.eq(now);
+	if(next==total_num){next=0;}
+	$(now_ele).fadeToggle(500);
+	function show_next(){
+		$(".video_list_li").eq(next).css("display","block");
+	}
+	setTimeout(show_next,600);
+	console.log(lis.eq(now).attr("id"));
+	
+})
 
 	document.getElementById('collection').addEventListener('tap', function() {
 		
