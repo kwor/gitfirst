@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/moment_main.css" rel="stylesheet"/>
+    <link href="css/main_page.css" rel="stylesheet"/>
+   
+    <style type="text/css">
+    	#app_name .mui-icon .mui-icon-clear .mui-hidden{line-height: 3vh;}
+    </style>
+</head>
+<body>
+
+	<div id="main" class="sign_content mui-content">
+		<!--  Top Templete  Start -->
+	<header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title" style="font-size:1.5rem;">评论列表</h1>
+    </header>
+		<!--  Top Templete  End -->
+
+		<!--  Near By Templete  -->
+        
+     	<div id="OA_task_1" style="margin-top: 30px;"> </div>
+		
+		<textarea name="talk" id="talk"></textarea>
+		<button id="stalk">发布</button>
+		
+	 
+		<!--  Bottom Templete End  -->
+	</div>
+</body>
+<script language="JavaScript">
+mui.init();
+	var uid = localStorage.getItem('user_id');
+	var self = plus.webview.currentWebview();
+    var kshop_video_id = self.kshop_video_id;
+    var talkinput= document.getElementById('talk');
+	
+ 
+           
+	document.getElementById('stalk').addEventListener('tap', function() {
+	var content=talkinput.value;
+
+	 mui.post('http://whois8.cn/addshopvideo_comment.php',{
+		uid:uid,
+		content:content,
+		kshop_video_id:kshop_video_id
+	    },function(data){
+	    
+	        mui.alert(data);
+
+	     },'text'
+       );
+	 });
+	 
+
+</script>
+</html>

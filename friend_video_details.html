@@ -65,7 +65,7 @@
 				<div id="details_of_icons">
 					<img src="img/pic/icon_like.png" />
 					<img src="img/pic/icon_share.png" />
-					<img src="img/pic/icon_comment.png" />
+					<img src="img/pic/icon_comment.png" id="commentbtn"/>
 				</div>
 			</div>
 			
@@ -105,5 +105,21 @@ list2.innerHTML += '<div class="review_contents"><div class="reviewImg"><img src
 					'<div style="clear: both;"></div></div>';
                })
 	        });	
+	        
+		document.getElementById('commentbtn').addEventListener('tap', function() {
+		
+		    //  mui.alert(vid);
+		         mui.openWindow({
+                  url: 'friend_video_comment.html',
+                  id: 'friend_video_comment',
+                  extras:{
+                    kshop_video_id:vid
+                  }
+                });
+		      
+		      
+		      
+		});
+	
 </script>
 </html>
