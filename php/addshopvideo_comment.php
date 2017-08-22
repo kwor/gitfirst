@@ -5,9 +5,10 @@ require_once("dbconn.php");
 	$kshop_video_id=$_REQUEST["kshop_video_id"]?$_REQUEST["kshop_video_id"]:0;
 
 	 
-	$sql = "insert into kshop_video_comment (kshop_video_id,uid,comment,addtime) VALUES('$kshop_video_id','$uid','$comment',now())";
-	 
+	$sql = "insert into kshop_video_comment (kshop_video_id,uid,content,addtime) VALUES('$kshop_video_id','$uid','$comment',now())";
+ 
 	$res=mysqli_query($dbconn,$sql);
+	
 	if($res){
 		
 		$sql1="update kshop_video set comment_num=comment_num+1 where id=".$kshop_video_id;
@@ -17,9 +18,6 @@ require_once("dbconn.php");
 			}else{
 				echo "comment_num error";
 			}
-		
-		
-		
 		
 	}else{
 		echo "error";
