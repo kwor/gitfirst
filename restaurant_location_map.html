@@ -9,6 +9,9 @@
     <link href="css/mui.min.css" rel="stylesheet"/>
     <link href="css/sign_in_up.css" rel="stylesheet"/>
     <link href="css/main_page.css" rel="stylesheet"/>
+    <style type="text/css">
+    	#show_map_navi{margin-top: 45px;}
+    </style>
     <script type="text/javascript" charset="utf-8">
       	mui.init();
       	$(document.body).css({
@@ -28,6 +31,8 @@ window.onload=function(){
 	// 调用方法
 	var location=GetQueryString("location");
 	$('#app_name_div span').text(location);
+	var win_height=$(document).height();
+	$("#map").css("height",(win_height-50)+"px");
 }
 </script>
  <style>
@@ -42,7 +47,7 @@ window.onload=function(){
  		
    <header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title" style="font-size:1.5rem;">Meet with Restaurant</h1>
+			<h1 class="mui-title" style="font-size:1.15rem;">餐&nbsp;厅&nbsp;导&nbsp;航</h1>
     </header>
 		
 		
@@ -69,10 +74,10 @@ window.onload=function(){
       }
       
       function ckmap(address){
-      	var uluru = {lat: 22.198745, lng: 113.543873};
+      	var uluru = {lat: 22.3052572, lng: 114.1793327};
         
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
+          zoom: 20,
           center: uluru,
           //disableDefaultUI: true
         });

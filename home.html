@@ -50,6 +50,7 @@
           	.mui-navigate-right:after, .mui-push-right:after{content: none;}
           	.mui-bar-nav.mui-bar .mui-icon{font-weight: bold; color: #FFFFFF;}
           	.video_list_li{display: none; z-index: 99;}
+          	.main_page_restaurant_video{}
 		</style>
 
 </head>
@@ -126,13 +127,13 @@
    
                     list2.innerHTML +='<div class="video_list_li" id="'+index+'">'+
                     '<div class="main_page_restaurant_video">'+
-                    '<img class="video_img" src="img/pic/videoshot.png" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
+                    '<img class="video_img" src="img/pic/videoshot_'+item[0]+'.png" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
                     '<div class="restaurant_info">'+
                     '<div class="like-info">'+
 					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><100m</span>'+
-					'<span class="restaurant_type">'+item[2]+' Food</span></div>'+
+					'<span class="restaurant_type">'+item[2]+'</span></div>'+
 				    '<div class="dislike-info"><img src="img/icon/friends.png" class="friends_num" id="'+item[0]+'"/>'+
-					'<span class="friends_num"><a href="#">5</a> Friends</span></div>'+
+					'<span class="friends_num"><a href="#">'+item[4]+'</a> 位好友</span></div>'+
 				    '<div style="clear: both;"></div>'+
 				    '<img src="img/icon/like.png" class="like-restaurant" id="'+item[0]+'"/>'+
 				    '<img src="img/icon/cross.png" class="dislike-restaurant" data-id="'+index+'" />'+
@@ -163,10 +164,12 @@
 				    	video.play();
 				    	video.addEventListener("ended",function(){
 				    		//console.log("finished");
+				    		video.style.display="none";
 				    		obj.show();
 				    	});
 				    	video.addEventListener("pause",function(){
 				    		//console.log("finished");
+				    		video.style.display="none";
 				    		obj.show();
 				    	});
 				    });

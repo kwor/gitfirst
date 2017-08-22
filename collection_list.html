@@ -33,6 +33,8 @@
           	
           	#OA_task_1,#OA_task_2{margin-top: 0;}
           	#item1mobile,#item2mobile{min-height: 1000px;}
+          	.collection_right{ margin-left: 16vh;}
+          	.collection_img{height: 10vh;position: absolute; left: 0; top: 1vh;}
 		</style>
 </head>
 <body>
@@ -70,7 +72,8 @@
                     li.id=item[2];
                     li.innerHTML +=     '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>'+
                                         '<div class="mui-slider-handle">'+
-                                        '<span class="user_info"><p>'+item[1]+'</p><a>'+item[0]+'</a></span></div>'+
+                                        '<img src="img/pic/restaurant_icon.png" class="collection_img" />'+
+                                        '<span class="user_info collection_right"><p>'+item[1]+'</p><a>'+item[0]+'</a></span></div>'+
                                         '<div style="clear:both;"></div>';
 		          fragment.appendChild(li);
 		          

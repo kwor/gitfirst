@@ -9,6 +9,9 @@
     <link href="css/mui.min.css" rel="stylesheet"/>
     <link href="css/moment_main.css" rel="stylesheet"/>
     <link href="css/main_page.css" rel="stylesheet"/>
+    <style type="text/css">
+    	.video_img{z-index: 9; width: 100%; height: auto;}
+    </style>
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
@@ -20,7 +23,7 @@
 				
    <header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title" style="font-size:1.5rem;">Friend Videos</h1>
+			<h1 class="mui-title" style="font-size:1.15rem;">好&nbsp;友&nbsp;视&nbsp;频</h1>
     </header>
     
  		<!--  Top Templete  End -->
@@ -55,7 +58,7 @@
 		       mui.each(data,function(index,item){
     
                     list2.innerHTML += '<div class="friend_video_templete" id="'+item[0]+'">'+
-				'<video src="http://whois8.cn/files/'+item[2]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video>'+
+				'<img class="video_img" src="img/pic/videoshot'+item[0]+'.png" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[2]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video>'+
 				'<div class="like_comments">'+
 				'<img src="img/pic/like.png" /><span>'+item[1]+'</span>'+
 				'<img src="img/pic/comments.png" class="vcomment" id="'+item[0]+'"/><span>0</span>'+
