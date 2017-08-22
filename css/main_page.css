@@ -23,7 +23,7 @@
 
 /*Restaurant Info*/
 #main_page_restaurant{width: 90%; margin-left: 5%; position: relative;}
-.main_page_restaurant_video{width: 100%; position: relative; text-align: center;}
+.main_page_restaurant_video{width: 100%; position: relative; text-align: center;height: 50vh;}
 .main_page_restaurant_video video{height: 50vh;}
 .video_img{position: absolute; z-index: 999; left: 0; height: 50vh;}
 .main_page_restaurant_video img{width: 100%;}
@@ -57,7 +57,7 @@
 
 
 /*  Friend Videos  */
-#friend_video_title{background: #ecddc8; margin-top: 10vh; width: 100%; height: 8vh; text-align: center;}
+#friend_video_title{background: #ecddc8; margin-top: 8vh; width: 100%; height: 8vh; text-align: center;}
 #friend_video_title span{height: 8vh; line-height: 8vh; font-size: 1.2rem; color: #665f56; font-weight: bold;}
 #friend_video_div{width: 100%; }
 .friend_video_templete{width: 40%; height: 30vh; position: relative; float: left; margin-left: 6.5%; margin-top: 3vh;}

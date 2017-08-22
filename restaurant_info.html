@@ -20,7 +20,7 @@
 						
    <header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title" id="top_title" style="color: #3D3D3D;" >Meet with Restaurant</h1>
+			<h1 class="mui-title" id="top_title" style="color: #3D3D3D;" >商&nbsp;店&nbsp;信&nbsp;息</h1>
     </header>
 		<!--  Top Templete  End -->
 		
@@ -152,7 +152,15 @@
 		        var sphone= document.getElementById('sphone');
 		       sphone.innerHTML=data["phone"];
 		       
-		       
+		    document.getElementById("sphone").addEventListener('tap',function(){
+            var btnArray=['拨打','取消'];
+            var phone=data["phone"];
+            mui.confirm('是否拨打'+phone+'?','提示',btnArray,function(e){
+                if(e.index == 0){
+                    plus.device.dial(phone,false);
+                }
+            });
+        });   
 		});  
 	
 	
