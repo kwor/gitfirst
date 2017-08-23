@@ -11,7 +11,7 @@ require_once("dbconn.php");
 	
 	while ($row = mysqli_fetch_array($query)){
 		$i=$i+1;
-        $a[$i]=array($row[id],$row[like_num],$row[video]);
+        $a[$i]=array($row[id],$row[like_num],$row[video],$row[comment_num],$row[topimg]);
 
 	}
 	 
