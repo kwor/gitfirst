@@ -124,10 +124,10 @@
 		       //数据绑定在此处
 	           
 		       mui.each(data,function(index,item){
-   
+   console.log("http://whois8.cn/"+item[5]);
                     list2.innerHTML +='<div class="video_list_li" id="'+index+'">'+
                     '<div class="main_page_restaurant_video">'+
-                    '<img class="video_img" src="whois8.cn/imgs/'+item[4]+'" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
+                    '<img class="video_img" src="http://whois8.cn/'+item[5]+'" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
                     '<div class="restaurant_info">'+
                     '<div class="like-info">'+
 					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><100m</span>'+
