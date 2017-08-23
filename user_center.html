@@ -108,7 +108,7 @@
 		       mui.each(data,function(index,item){
 		      // console.log(item[1]);
                user_videos.innerHTML+='<div class="user_videos_img">'+
-               						  '<img class="video_img_user" src="img/pic/videoshot.png" data-id="'+index+'"/>'+
+               						  '<img class="video_img_user" src="http://whois8.cn/'+item[2]+'" data-id="'+index+'"/>'+
                						  '<video id="video_'+index+'"  src="http://whois8.cn/files/'+item[1]+'">播放器</video></div>';
                var videos = $(".video_img_user");
 				    videos.on("tap", function(){
