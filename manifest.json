@@ -132,34 +132,34 @@
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
 					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
-						"normal": "",/*iPhone普通屏幕程序图标，分辨率：57x57*/
-						"retina": "",/*iPhone高分屏程序图标，分辨率：114x114*/
-						"retina7": "",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
-						"spotlight-normal": "", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
-						"spotlight-retina": "", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
-						"spotlight-retina7": "",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "", /*iPhone设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
+						"normal": "unpackage/res/icons/57x57.png",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png",/*iPhone高分屏程序图标，分辨率：114x114*/
+						"retina7": "unpackage/res/icons/120x120.png",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png","retina8":"unpackage/res/icons/180x180.png","settings-retina8":"unpackage/res/icons/87x87.png"
 					},
 					"ipad": {
-						"normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
-						"retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
-						"normal7": "", /*iPad iOS7程序图标，分辨率：76x76*/
-						"retina7": "", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
-						"spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
-						"spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-						"spotlight-normal7": "",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-						"spotlight-retina7": "",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "",/*iPad设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png"
 					}
 				},
 				"android": {
-					"mdpi": "", /*普通屏程序图标，分辨率：48x48*/
-					"ldpi": "", /*大屏程序图标，分辨率：48x48*/
-					"hdpi": "", /*高分屏程序图标，分辨率：72x72*/
-					"xhdpi": "",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": ""
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png","xxxhdpi":"unpackage/res/icons/192x192.png"
 				}
 			},
 			"splashscreen": {
@@ -188,6 +188,430 @@
 					"xxhdpi": ""
 				}
 			}
+		}
+	},
+	"dependencies":{
+		"pages": {
+			"chat_content.html": {
+				"href": "chat_content.html",
+				"resources": [
+					"img/icon/user_headImg.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"priority": 0
+			},
+			"other_user_center.html": {
+				"href": "other_user_center.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/user.css",
+					"css/main_page.css",
+					"img/icon/user_headImg.png",
+					"img/icon/follow.png",
+					"img/icon/chat.png"
+				],
+				"refer": [
+					"chat_content.html"
+				],
+				"priority": 0
+			},
+			"restaurant_location_map.html": {
+				"href": "restaurant_location_map.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/sign_in_up.css",
+					"css/main_page.css"
+				],
+				"priority": 2
+			},
+			"restaurant_info.html": {
+				"href": "restaurant_info.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/sign_in_up.css",
+					"css/main_page.css",
+					"img/pic/restaurant_icon.png",
+					"img/pic/nearby_logo_1.png",
+					"img/pic/restaurant_score.png",
+					"img/pic/nearby_logo_2.png",
+					"img/icon/categ.png",
+					"img/icon/tel.png",
+					"img/pic/location.png"
+				],
+				"refer": [
+					"restaurant_location_map.html"
+				],
+				"priority": 2
+			},
+			"collection_list.html": {
+				"href": "collection_list.html",
+				"resources": [
+					"img/pic/restaurant_icon.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"refer": [
+					"restaurant_info.html"
+				],
+				"priority": 2
+			},
+			"chat_list.html": {
+				"href": "chat_list.html",
+				"resources": [
+					"img/icon/user_headImg.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"refer": [
+					"other_user_center.html",
+					"chat_content.html",
+					"collection_list.html",
+					"main_page.html"
+				],
+				"priority": 0
+			},
+			"friend_video_comment.html": {
+				"href": "friend_video_comment.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"priority": 4
+			},
+			"friend_video_details.html": {
+				"href": "friend_video_details.html",
+				"resources": [
+					"img/pic/reviewImg.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css",
+					"img/pic/friend_video_detail_headImg.png",
+					"img/pic/icon_like.png",
+					"img/pic/icon_share.png",
+					"img/pic/icon_comment.png"
+				],
+				"refer": [
+					"friend_video_comment.html"
+				],
+				"priority": 4
+			},
+			"friend_videos.html": {
+				"href": "friend_videos.html",
+				"resources": [
+					"img/pic/like.png",
+					"img/pic/comments.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"refer": [
+					"friend_video_details.html"
+				],
+				"priority": 4
+			},
+			"home.html": {
+				"href": "home.html",
+				"resources": [
+					"img/icon/like.png",
+					"img/icon/friends.png",
+					"img/icon/cross.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/sign_in_up.css",
+					"css/main_page.css"
+				],
+				"refer": [
+					"restaurant_info.html",
+					"collection_list.html",
+					"main_page.html",
+					"friend_videos.html"
+				],
+				"priority": 1
+			},
+			"user_center.html": {
+				"href": "user_center.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/user.css",
+					"css/main_page.css",
+					"img/icon/user_headImg.png"
+				],
+				"refer": [
+					"collection_list.html",
+					"main_page.html"
+				],
+				"priority": 2
+			},
+			"moment_content_comment.html": {
+				"href": "moment_content_comment.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"priority": 4
+			},
+			"moment_content.html": {
+				"href": "moment_content.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"priority": 6
+			},
+			"moment_content_ref.html": {
+				"href": "moment_content_ref.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"priority": 7
+			},
+			"moment.html": {
+				"href": "moment.html",
+				"resources": [
+					"img/icon/16574553a435563.png",
+					"img/icon/comment_num.png",
+					"img/icon/share_black.png",
+					"img/pic/more_icon.png",
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"refer": [
+					"collection_list.html",
+					"moment_content_comment.html",
+					"main_page.html",
+					"moment_content.html",
+					"moment_content_ref.html"
+				],
+				"priority": 3
+			},
+			"video_content.html": {
+				"href": "video_content.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/moment_main.css",
+					"css/main_page.css"
+				],
+				"priority": 4
+			},
+			"main_page.html": {
+				"href": "main_page.html",
+				"resources": [
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"js/mui.min.js"
+				],
+				"refer": [
+					"chat_list.html",
+					"home.html",
+					"user_center.html",
+					"moment.html",
+					"video_content.html"
+				],
+				"priority": 0
+			},
+			"sign_up.html": {
+				"href": "sign_up.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/sign_in_up.css",
+					"img/pic/background.png"
+				],
+				"refer": [
+					"main_page.html",
+					"index.html"
+				],
+				"priority": 1
+			},
+			"index.html": {
+				"href": "index.html",
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery-3.2.1.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf",
+					"css/sign_in_up.css",
+					"img/pic/background.png",
+					"img/pic/facebook_icon.png",
+					"img/pic/wechat_icon.png",
+					"img/pic/ins_icon.png"
+				],
+				"refer": [
+					"main_page.html",
+					"sign_up.html"
+				],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"php/getshoplist.php",
+				"img/icon/ranking.png",
+				"img/pic/suggested_1.png",
+				"php/sendmessage.php",
+				"img/icon/create.png",
+				"img/pic/ingre6.png",
+				"img/pic/videoshot8.png",
+				"img/pic/ingre5.png",
+				"img/pic/videoshot7.png",
+				"js/mui.poppicker.js",
+				"img/pic/videoshot_10.png",
+				"js/mui.js",
+				"js/city.data.js",
+				"img/pic/map_navi.png",
+				"php/addshopvideo_comment.php",
+				"js/mui.view.js",
+				"img/icon/video.png",
+				"php/getnewmessage.php",
+				"js/app.js",
+				"img/pic/suggested_3.png",
+				"img/icon/menu_user.png",
+				"img/pic/videoshot_8.png",
+				"img/pic/videoshot_3.png",
+				"js/city.data-3.js",
+				"php/getvideocommentlist.php",
+				"php/getfollowlist.php",
+				"img/pic/ingre2.png",
+				"img/pic/ingre3.png",
+				"php/test.php",
+				"img/pic/videoshot6.png",
+				"js/feedback.js",
+				"img/icon/choose.png",
+				"php/getUserInfo.php",
+				"img/icon/top_menu.png",
+				"img/pic/dish2.png",
+				"img/icon/camera.png",
+				"img/icon/send.png",
+				"php/getshopinfo.php",
+				"php/getspaceinfo.php",
+				"libs/easymob-webim-sdk/jquery-1.11.1.js",
+				"php/sendkfspace_video.php",
+				"img/pic/videoshot_7.png",
+				"js/mui.indexedlist.js",
+				"img/icon/filter.png",
+				"php/getfollowinglist.php",
+				"css/mui.indexedlist.css",
+				"php/getindex.php",
+				"js/previewImg.js",
+				"img/pic/ingre4.png",
+				"js/mui.locker.js",
+				"php/dbconn.php.rej",
+				"img/pic/videoshot10.png",
+				"img/pic/videoshot_9.png",
+				"js/mui.picker.min.js",
+				"php/getvideolist.php",
+				"img/pic/ingre1.psd",
+				"php/getcollectionlist.php",
+				"img/pic/reviewImg1.png",
+				"php/getshopvideolist.php",
+				"img/icon/share_white.png",
+				"img/pic/videoshot_4.png",
+				"img/icon/edit.png",
+				"php/addvideo.php",
+				"php/getuserlist.php",
+				"css/mui.picker.min.css",
+				"img/pic/suggested_2.png",
+				"js/city.mo.js",
+				"css/media_queries.css",
+				"php/getspace_commentlist.php",
+				"js/mui.picker.js",
+				"img/pic/ingre6#.png",
+				"css/main.css",
+				"libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+				"php/upvideo.php",
+				"css/mui.css",
+				"js/mui.enterfocus.js",
+				"img/icon/enchange_original.png",
+				"php/getspacelist.php",
+				"php/login.php",
+				"css/feedback-page.css",
+				"php/addfollow.php",
+				"php/dbconn.php",
+				"img/icon/home.png",
+				"php/gettalking.php",
+				"img/icon/back.png",
+				"css/index.css",
+				"img/pic/videoshot9.png",
+				"img/icon/user2.png",
+				"img/pic/videoshot4.png",
+				"libs/easymob-webim-sdk/json2.js",
+				"img/icon/enchange.png",
+				"img/icon/moment.png",
+				"css/mui.poppicker.css",
+				"js/feedback-page.js",
+				"img/pic/dish1.png",
+				"php/testvideo.php",
+				"php/addspace_comment.php",
+				"img/pic/dish3.png",
+				"img/pic/videoshot5.png",
+				"libs/easymob-webim-sdk/quickstart.md",
+				"css/style.css",
+				"css/mui.picker.css",
+				"php/getinfoforuser.php",
+				"php/getshopvideoinfo.php",
+				"php/addcollection.php",
+				"img/icon/message.png",
+				"libs/easymob-webim-sdk/strophe-custom-2.0.0.js"
+			]
 		}
 	}
 }

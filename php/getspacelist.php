@@ -18,7 +18,7 @@
 	while ($row = mysqli_fetch_array($query)){
 				
 		$i=$i+1;
-        $a[$i]=array($row[user_name],$row[kaddtime],$row[follow_num],$row[content],$row[video],$row[kfid],$row[comment_num]);
+        $a[$i]=array($row[user_name],$row[kaddtime],$row[follow_num],$row[content],$row[video],$row[kfid],$row[comment_num],$row[topimg]);
 
 	}
 	 

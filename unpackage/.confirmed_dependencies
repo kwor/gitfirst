@@ -1,1 +1,299 @@
-null
+{
+  "chat_content.html": {
+    "href": "chat_content.html",
+    "resources": [
+      "img/icon/user_headImg.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "other_user_center.html": {
+    "href": "other_user_center.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/user.css",
+      "css/main_page.css",
+      "img/icon/user_headImg.png",
+      "img/icon/follow.png",
+      "img/icon/chat.png"
+    ],
+    "refer": [
+      "chat_content.html"
+    ],
+    "priority": 0
+  },
+  "restaurant_location_map.html": {
+    "href": "restaurant_location_map.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/sign_in_up.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "restaurant_info.html": {
+    "href": "restaurant_info.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/sign_in_up.css",
+      "css/main_page.css",
+      "img/pic/restaurant_icon.png",
+      "img/pic/nearby_logo_1.png",
+      "img/pic/restaurant_score.png",
+      "img/pic/nearby_logo_2.png",
+      "img/icon/categ.png",
+      "img/icon/tel.png",
+      "img/pic/location.png"
+    ],
+    "refer": [
+      "restaurant_location_map.html"
+    ],
+    "priority": 0
+  },
+  "collection_list.html": {
+    "href": "collection_list.html",
+    "resources": [
+      "img/pic/restaurant_icon.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [
+      "restaurant_info.html"
+    ],
+    "priority": 0
+  },
+  "chat_list.html": {
+    "href": "chat_list.html",
+    "resources": [
+      "img/icon/user_headImg.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [
+      "other_user_center.html",
+      "chat_content.html",
+      "collection_list.html",
+      "main_page.html"
+    ],
+    "priority": 0
+  },
+  "friend_video_comment.html": {
+    "href": "friend_video_comment.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "friend_video_details.html": {
+    "href": "friend_video_details.html",
+    "resources": [
+      "img/pic/reviewImg.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css",
+      "img/pic/friend_video_detail_headImg.png",
+      "img/pic/icon_like.png",
+      "img/pic/icon_share.png",
+      "img/pic/icon_comment.png"
+    ],
+    "refer": [
+      "friend_video_comment.html"
+    ],
+    "priority": 0
+  },
+  "friend_videos.html": {
+    "href": "friend_videos.html",
+    "resources": [
+      "img/pic/like.png",
+      "img/pic/comments.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [
+      "friend_video_details.html"
+    ],
+    "priority": 0
+  },
+  "home.html": {
+    "href": "home.html",
+    "resources": [
+      "img/icon/like.png",
+      "img/icon/friends.png",
+      "img/icon/cross.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/sign_in_up.css",
+      "css/main_page.css"
+    ],
+    "refer": [
+      "restaurant_info.html",
+      "collection_list.html",
+      "main_page.html",
+      "friend_videos.html"
+    ],
+    "priority": 0
+  },
+  "user_center.html": {
+    "href": "user_center.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/user.css",
+      "css/main_page.css",
+      "img/icon/user_headImg.png"
+    ],
+    "refer": [
+      "collection_list.html",
+      "main_page.html"
+    ],
+    "priority": 0
+  },
+  "moment_content_comment.html": {
+    "href": "moment_content_comment.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "moment_content.html": {
+    "href": "moment_content.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "moment_content_ref.html": {
+    "href": "moment_content_ref.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "moment.html": {
+    "href": "moment.html",
+    "resources": [
+      "img/icon/16574553a435563.png",
+      "img/icon/comment_num.png",
+      "img/icon/share_black.png",
+      "img/pic/more_icon.png",
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [
+      "collection_list.html",
+      "moment_content_comment.html",
+      "main_page.html",
+      "moment_content.html",
+      "moment_content_ref.html"
+    ],
+    "priority": 0
+  },
+  "video_content.html": {
+    "href": "video_content.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/moment_main.css",
+      "css/main_page.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "main_page.html": {
+    "href": "main_page.html",
+    "resources": [
+      "css/mui.min.css",
+      "js/mui.min.js"
+    ],
+    "refer": [
+      "chat_list.html",
+      "home.html",
+      "user_center.html",
+      "moment.html",
+      "video_content.html"
+    ],
+    "priority": 0
+  },
+  "sign_up.html": {
+    "href": "sign_up.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/sign_in_up.css",
+      "img/pic/background.png"
+    ],
+    "refer": [
+      "main_page.html",
+      "index.html"
+    ],
+    "priority": 0
+  },
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "js/mui.min.js",
+      "js/jquery-3.2.1.min.js",
+      "css/mui.min.css",
+      "css/sign_in_up.css",
+      "img/pic/background.png",
+      "img/pic/facebook_icon.png",
+      "img/pic/wechat_icon.png",
+      "img/pic/ins_icon.png"
+    ],
+    "refer": [
+      "main_page.html",
+      "sign_up.html"
+    ],
+    "priority": 0
+  }
+}
