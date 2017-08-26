@@ -120,12 +120,12 @@
 		       mui.each(data,function(index,item){
     
                     list.innerHTML +=   '<div class="moment_content_templete_nearby" id="'+index+'"><div class="moment_content_templete_top">'+
-                                        '<img src="img/icon/16574553a435563.png" class="moment_user_headImg" /><div class="monent_user_name">'+
+                                        '<img src="img/icon/user_headImg.png" class="moment_user_headImg" /><div class="monent_user_name">'+
                                         '<span class="moment_user_name">'+item[0]+'</span>'+
 					                    '<span class="moment_post_time">'+item[1]+'</span></div>'+
 					                    '<img src="img/pic/more_icon.png" class="more_icon" /></div>'+
                                         '<div class="moment_video">'+
-                                        '<img class="video_img" src="http://whois8.cn/imgs/'+item[7]+'" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[4]+'">播放器</video></div>'+
+                                        '<img class="video_img" src="./video_shots/'+item[7]+'" data-id="'+index+'"/><video id="video_'+index+'" src="./videos/'+item[4]+'">播放器</video></div>'+
                                         '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">All day breakfast</span></div>'+
                                         '<div class="moment_share_comment"><div class="moment_share" id="'+item[5]+'"><img src="img/icon/share_black.png" />'+
 					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment"  id="'+item[5]+'">'+
@@ -166,13 +166,16 @@
 				    	//obj.hide();
 				    	var _id = $(this).data("id");
 				    	var video = document.getElementById("video_"+_id);
+				    	video.style.display="block";
 				    	video.play();
 				    	video.addEventListener("ended",function(){
 				    		//console.log("finished");
+				    		video.style.display="none";
 				    		obj.show();
 				    	});
 				    	video.addEventListener("pause",function(){
 				    		//console.log("finished");
+				    		video.style.display="none";
 				    		obj.show();
 				    	});
 				    });

@@ -95,12 +95,13 @@
 	mui.getJSON('http://whois8.cn/getshopvideoinfo.php',{vid:vid},function(data){
 		    //数据绑定在此处
 		       var friend_video_details_top= document.getElementById('friend_video_details_top');
-		       friend_video_details_top.innerHTML='<img class="video_img" src="http://whois8.cn/imgs/'+data["topimg"]+'"/><video id="video" src="http://whois8.cn/files/'+data["video"]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video>';
+		       friend_video_details_top.innerHTML='<img class="video_img" src="./video_shots/'+data["topimg"]+'"/><video id="video" src="./videos/'+data["video"]+'" controls="controls" preload="auto" width="100%" height="200"  webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video>';
 		       var videos = $(".video_img");
 				    videos.on("tap", function(){
 				    	var obj = $(this);
 				    	//obj.hide();
 				    	var video = document.getElementById("video");
+				    	video.style.display="block";
 				    	video.play();
 				    	video.addEventListener("ended",function(){
 				    		//console.log("finished");
