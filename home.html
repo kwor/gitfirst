@@ -52,6 +52,7 @@
           	.video_list_li{display: none; z-index: 99;}
           	.main_page_restaurant_video{}
           	.restaurant_info{margin-top: 1vh;}
+          	#camera{padding: 0;position: absolute;right: 10px;}
 		</style>
 
 </head>
@@ -88,7 +89,7 @@
 			<div class="mui-inner-wrap">
 				<header class="mui-bar mui-bar-nav">
 					<a href="#offCanvasSide" class="mui-icon mui-action-menu mui-icon-bars mui-pull-left"></a>
-					<a class="mui-action-back mui-btn mui-btn-link mui-pull-right"><span class="mui-icon mui-icon-camera"></span></a>
+					<span id="camera" class="mui-icon mui-icon-camera"></span>
 					<h1 class="mui-title" id="top_title">遇&nbsp;见&nbsp;餐&nbsp;厅</h1>
 				</header>
 		
@@ -125,10 +126,10 @@
 		       //数据绑定在此处
 	           
 		       mui.each(data,function(index,item){
-   console.log("http://whois8.cn/"+item[5]);
+   //console.log('./video_shots/'+item[5]);
                     list2.innerHTML +='<div class="video_list_li" id="'+index+'">'+
                     '<div class="main_page_restaurant_video">'+
-                    '<img class="video_img" src="http://whois8.cn/imgs/'+item[5]+'" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
+                    '<img class="video_img" src="./video_shots/'+item[5]+'" data-id="'+index+'"/><video id="video_'+index+'" src="./videos/'+item[3]+'" controls="controls" preload="auto" webkit-playsinline="true" playsinline="true">Your browser does not support the video tag.</video></div>'+
                     '<div class="restaurant_info">'+
                     '<div class="like-info">'+
 					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><100m</span>'+
@@ -162,6 +163,7 @@
 				    	//obj.hide();
 				    	var _id = $(this).data("id");
 				    	var video = document.getElementById("video_"+_id);
+				    	video.style.display="block";
 				    	video.play();
 				    	video.addEventListener("ended",function(){
 				    		//console.log("finished");
@@ -298,8 +300,91 @@ document.getElementById('index').addEventListener('tap', function() {
   
  
 }); 
-	
-</script>
 
+document.getElementById('camera').addEventListener('tap', function() {
+		console.log("index-home");
+	            mui.openWindow({
+                  url: 'main_page.html',
+                  id: 'home_index',
+                  
+                });
+  
+ 
+}); 
+</script>
+<script>
+    var cmr = plus.camera.getCamera();
+	
+	function stopCapture(){
+  //  console.log("stopCapture");
+    cmr.stopVideoCapture();
+    }
+	
+	// 扩展API加载完毕后调用onPlusReady回调函数 
+document.addEventListener( "plusready", onPlusReady, false );
+var r = null; 
+// 扩展API加载完毕，现在可以正常调用扩展API 
+function onPlusReady() {
+	document.getElementById('camera').addEventListener('tap', function() {
+	             
+	            
+                //获取相机
+                cmr.startVideoCapture(function(p) {
+                //录像
+                plus.io.resolveLocalFileSystemURL(p, function(entry) {
+                //通过URL参数获取目录对象或文件对象 就是获取到录像文件位置    
+                //console.log(p);//打印文件位置，可以直接用作上传路径
+                var uid = localStorage.getItem('user_id');
+                //console.log(uid);
+                //document.getElementById('videoshow').src=p;
+                  
+                var arr = p.split('/');
+		 
+                var filename=(new Date()).valueOf()+arr[arr.length-1];
+                
+                 var task = plus.uploader.createUpload( "http://whois8.cn/upvideo.php", 
+		{ method:"POST",blocksize:804800,priority:100 },
+		function ( t, status ) {
+			// 上传完成
+		if ( status == 200 ) {
+		console.log(filename);
+		 mui.openWindow({
+                  url: 'video_content.html',
+                  id: 'video_content',
+                  extras:{
+                    video:filename
+                  }  
+               })
+			} else {
+				alert( "短片上传失败: " + status );
+			}
+		}
+	);
+	task.addFile( p, {key:"testdoc",name:filename} );
+	task.addData( "string_key", "string_value" );
+	//task.addEventListener( "statechanged", onStateChanged, false );
+	task.start();
+
+    
+                    }, function(e) {
+                        console.log("读取录像文件错误：" + e.message);
+                    });
+
+                }, function(e) {
+                    console.log("失败");
+                    plus.nativeUI.toast("录像失败！",{duration:"long"});
+                }, {
+                	
+                    filename: "_doc/camera/",//文件保存目录
+                    resolution:"medium",//设置视频像素，默认最低，medium中等，high最高
+                    index: 2
+                    
+                });
+	             // 拍摄10s后自动完成 
+                var timer = setTimeout( stopCapture, 10000 );
+	 });
+	// 停止摄像
+}
+		</script>
 
 </html>

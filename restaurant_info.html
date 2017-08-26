@@ -33,7 +33,7 @@
 		<div id="restaurant_html_top_info_div">
 			<div class="restaurant_info_html">
 				<div class="restaurant_html_logo">
-					<img src="img/pic/restaurant_icon.png" class="restaurant_icon" />
+					<img id="restaurant_logo" src="img/pic/restaurant_icon.png" class="restaurant_icon" />
 				</div>
 				<div class="restaurant_html_info">
 					<span id="sname">{name}</span>
@@ -74,7 +74,7 @@
 		</script>
 		<!--  Restaurant Nearby List Start -->
 		<div id="nearby_body">
-			<div class="restaurant_nearby">
+			<div class="restaurant_nearby" id="1">
 				<div class="nearby_logo">
 					<img src="img/pic/nearby_logo_1.png" />
 				</div>
@@ -86,7 +86,7 @@
 				<div style="clear: both;"></div>
 			</div>
 			
-			<div class="restaurant_nearby">
+			<div class="restaurant_nearby" id="2">
 				<div class="nearby_logo">
 					<img src="img/pic/nearby_logo_2.png" />
 				</div>
@@ -98,7 +98,7 @@
 				<div style="clear: both;"></div>
 			</div>
 			
-			<div class="restaurant_nearby">
+			<div class="restaurant_nearby" id="3">
 				<div class="nearby_logo">
 					<img src="img/pic/nearby_logo_1.png" />
 				</div>
@@ -110,7 +110,7 @@
 				<div style="clear: both;"></div>
 			</div>
 			
-			<div class="restaurant_nearby">
+			<div class="restaurant_nearby" id="4">
 				<div class="nearby_logo">
 					<img src="img/pic/nearby_logo_2.png" />
 				</div>
@@ -139,7 +139,7 @@
 		  mui.getJSON('http://whois8.cn/getshopinfo.php',{shopid:shopid},function(data){
 		    //数据绑定在此处
 	          
-		       
+		       //console.log("./imgs/"+data["logo"]);
 		       var sname= document.getElementById('sname');
 		       sname.innerHTML=data["name"];
 		       
@@ -148,6 +148,8 @@
 		       
 		        var saddr= document.getElementById('saddr');
 		       saddr.innerHTML=data["addr"];
+		       
+		       $('#restaurant_logo').attr("src","./"+data["logo"]);
 		       
 		        var sphone= document.getElementById('sphone');
 		       sphone.innerHTML=data["phone"];
@@ -163,6 +165,18 @@
         });   
 		});  
 	
-	
+	mui("#nearby_body").on('tap','.restaurant_nearby',function(){
+   //获取id
+  var id = this.getAttribute("id");
+ // console.log(id);
+                mui.openWindow({
+                  url: 'friend_videos.html',
+                  id: 'friend_videos',
+                  extras:{
+                    shopid:id
+                  }  
+                });
+  
+ })
 </script>
 </html>
