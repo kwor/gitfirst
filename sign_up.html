@@ -8,6 +8,9 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <link href="css/mui.min.css" rel="stylesheet"/>
     <link href="css/sign_in_up.css" rel="stylesheet"/>
+    <style type="text/css">
+    	.mui-input-group:before ,.mui-input-group:after{height: 0;}
+    </style>
     <script type="text/javascript" charset="utf-8">
       	mui.init();
     </script>
@@ -27,16 +30,16 @@
 		-->
 		
 			<form class="mui-input-group" id="sign_up_form" method="post" action="#">
-				<input type="text" id="user_email_up" name="user_email" class="mui-input-clear" placeholder="Email">
+				<input type="text" id="user_email_up" name="user_email" class="mui-input-clear" placeholder="电子邮箱">
 				<span id="error_message1" class="error_message"></span>
-				<input type="text" id="user_name_up" name="user_name" class="mui-input-clear " placeholder="Username">
+				<input type="text" id="user_name_up" name="user_name" class="mui-input-clear " placeholder="用户名">
 				<span id="error_message2" class="error_message"></span>
-				<input type="password" id="user_password_up" name="user_password" class="mui-input-password " placeholder="Password">
+				<input type="password" id="user_password_up" name="user_password" class="mui-input-password " placeholder="密码">
 				<span id="error_message3" class="error_message"></span>
-				<input type="password" id="confirm_password" name="confirm_password" class="mui-input-password" placeholder="Confirm Password">
+				<input type="password" id="confirm_password" name="confirm_password" class="mui-input-password" placeholder="密码确认">
 				<span id="error_message4" class="error_message"></span>
 				<input type="hidden" id="login_type" name="login_type" value="sign_up" />
-				<button type="button" class="mui-btn mui-btn-primary" id="sign_up_button" onclick="check_info()">Sign Up</button>
+				<button type="button" class="mui-btn mui-btn-primary" id="sign_up_button" onclick="check_info()">注&nbsp;&nbsp;册</button>
 			</form>
 	<script language="JavaScript">
 		function is_not_empty(){
@@ -127,8 +130,10 @@
 		}
 	</script>
 		
-		<div id="extra_info_up">
-			<label id="extra_info_left">Already have an account? &nbsp;&nbsp;&nbsp;&nbsp;<a href="index.html" style="color: #007aff;">Sign in</a></label>
+		<div id="extra_info_up" >
+			<label id="extra_info_left" >已经拥有账号？ &nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="index.html" style="color: #007aff;">点此登陆</a>
+			</label>
 			<div style="clear: both;"></div>
 		</div>
 	</div>

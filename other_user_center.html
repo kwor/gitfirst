@@ -14,6 +14,7 @@
     </script>
     <style type="text/css">
     	.mui-bar-nav.mui-bar .mui-icon{color: #000;}
+    	.video_img_user{width: 100%;}
     </style>
 </head>
 <body style="background: #FFFFFF;">
@@ -40,12 +41,12 @@
 				<div id="other_ops">
 					<div class="other_ops" id="followu" style="margin-bottom: 20px;">
 						<span><img src="img/icon/follow.png"/></span>
-						<span style="margin-left: 3vw;">Follow</span>
+						<span style="margin-left: 3vw;">关注</span>
 						<div style="clear: both;"></div>
 					</div>
 					<div class="other_ops" id="chat">
 						<span><img src="img/icon/chat.png"/></span>
-						<span style="margin-left: 3vw;">Chat</span>
+						<span style="margin-left: 3vw;">聊天</span>
 						<div style="clear: both;"></div>
 					</div>
 					<!--<div class="other_ops">
@@ -58,15 +59,15 @@
 			<div id="user_following_info">
 				<div class="following_info">
 					<span id="follownum">0</span>
-					<span>Follow</span>
+					<span>关注</span>
 				</div>
 				<div class="following_info">
 					<span id="followernum">0</span>
-					<span>Followers</span>
+					<span>被关注</span>
 				</div>
 				<div class="following_info">
 					<span  id="videonum">0</span>
-					<span>Videos</span>
+					<span>视频</span>
 				</div>
 			</div>
 			<div style="clear: both;"></div>
@@ -128,8 +129,8 @@
 		       mui.each(data,function(index,item){
 		      // console.log(item[1]);
               user_videos.innerHTML+='<div class="user_videos_img">'+
-               						  '<img class="video_img_user" src="img/pic/videoshot.png" data-id="'+index+'"/>'+
-               						  '<video id="video_'+index+'"  src="http://whois8.cn/files/'+item[1]+'">播放器</video></div>';
+               						  '<img class="video_img_user" src="./'+item[2]+'" data-id="'+index+'"/>'+
+               						  '<video id="video_'+index+'"  src="./videos/'+item[1]+'">播放器</video></div>';
                var videos = $(".video_img_user");
 				    videos.on("tap", function(){
 				    	var obj = $(this);
