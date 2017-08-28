@@ -52,10 +52,11 @@
 						<span id="sphone">2786&nbsp;3336</span>
 						<div style="clear: both;"></div>
 					</div>
-					<div class="restaurant_info_html_div" onclick="open_map(this)">
+					<div class="restaurant_info_html_div" id="open_map">
 						<img src="img/pic/location.png" class="restaurant_html_icon location" />
 						<input type="hidden" value="D Cafe" name="map_elem" id="map_elem"/>
 						<span style="height: auto;" id="saddr">Room V220, Podium, Jockey Club Innovation Tower, Polyu, Hung Hom</span>
+						<input type="hidden" id="addr_ll" value="" />
 						<div style="clear: both;"></div>
 					</div>
 					<div style="clear: both;"></div>
@@ -64,63 +65,9 @@
 			</div>
 			<div style="clear: both;"></div>
 		</div>
-		<script language="JavaScript">
-			function open_map(obj){
-				var location=obj.getElementsByTagName("span").item(0).innerHTML;
-				var map_elem=$("#map_elem").val();
-				//alert(location);
-				window.location.href='restaurant_location_map.html?location='+map_elem;
-			}
-		</script>
 		<!--  Restaurant Nearby List Start -->
 		<div id="nearby_body">
-			<div class="restaurant_nearby" id="1">
-				<div class="nearby_logo">
-					<img src="img/pic/nearby_logo_1.png" />
-				</div>
-				<div class="nearby_info">
-					<span>Pasta</span>
-					<span>$&nbsp;48</span>
-					<img src="img/pic/restaurant_score.png" class="nearby_score" />
-				</div>
-				<div style="clear: both;"></div>
-			</div>
 			
-			<div class="restaurant_nearby" id="2">
-				<div class="nearby_logo">
-					<img src="img/pic/nearby_logo_2.png" />
-				</div>
-				<div class="nearby_info">
-					<span>Tomato pesto with walnut</span>
-					<span>$&nbsp;52</span>
-					<img src="img/pic/restaurant_score.png" class="nearby_score" />
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="restaurant_nearby" id="3">
-				<div class="nearby_logo">
-					<img src="img/pic/nearby_logo_1.png" />
-				</div>
-				<div class="nearby_info">
-					<span>Pasta</span>
-					<span>$&nbsp;48</span>
-					<img src="img/pic/restaurant_score.png" class="nearby_score" />
-				</div>
-				<div style="clear: both;"></div>
-			</div>
-			
-			<div class="restaurant_nearby" id="4">
-				<div class="nearby_logo">
-					<img src="img/pic/nearby_logo_2.png" />
-				</div>
-				<div class="nearby_info">
-					<span>Tomato pesto with walnut</span>
-					<span>$&nbsp;52</span>
-					<img src="img/pic/restaurant_score.png" class="nearby_score" />
-				</div>
-				<div style="clear: both;"></div>
-			</div>
 		</div>
 		
 	 
@@ -137,6 +84,7 @@
     var shopid = self.shopid;
 	
 		  mui.getJSON('http://whois8.cn/getshopinfo.php',{shopid:shopid},function(data){
+		  	//console.log(data["lat"]+data["lng"]);
 		    //数据绑定在此处
 	          
 		       //console.log("./imgs/"+data["logo"]);
@@ -154,17 +102,50 @@
 		        var sphone= document.getElementById('sphone');
 		       sphone.innerHTML=data["phone"];
 		       
-		    document.getElementById("sphone").addEventListener('tap',function(){
+		document.getElementById("sphone").addEventListener('tap',function(){
             var btnArray=['拨打','取消'];
             var phone=data["phone"];
             mui.confirm('是否拨打'+phone+'?','提示',btnArray,function(e){
                 if(e.index == 0){
                     plus.device.dial(phone,false);
                 }
-            });
-        });   
-		});  
+            	});
+        }); 
+        mui(".restaurant_html_info").on('tap','#open_map',function(){
+   //获取id
+                mui.openWindow({
+                  url: 'restaurant_location_map.html',
+                  id: 'restaurant_location_map',
+                  extras:{
+                    lat:data["lat"],
+                    lng:data["lng"]
+                  }  
+                });
+  
+ })
+        
+	});  
 	
+
+	
+	
+	
+mui.getJSON('http://whois8.cn/getmenu.php',{shopid:shopid},function(data){
+		       //数据绑定在此处
+	           var list = document.getElementById("nearby_body");
+	         
+		       mui.each(data,function(index,item){
+    console.log(item[0]);
+                    list.innerHTML +=   '<div class="restaurant_nearby" id="'+index+'">'+
+	                					'<div class="nearby_logo">'+
+										'<img src="./video_shots/'+item[3]+'" /></div>'+
+										'<div class="nearby_info">'+
+										'<span>'+item[1]+'</span><span>$&nbsp;'+item[2]+'</span>'+
+										'<img src="img/pic/restaurant_score.png" class="nearby_score" /></div>'+
+										'<div style="clear: both;"></div></div>';
+				})
+});
+
 	mui("#nearby_body").on('tap','.restaurant_nearby',function(){
    //获取id
   var id = this.getAttribute("id");
@@ -173,10 +154,11 @@
                   url: 'friend_videos.html',
                   id: 'friend_videos',
                   extras:{
-                    shopid:id
+                    shopid:shopid
                   }  
                 });
   
  })
+               
 </script>
 </html>

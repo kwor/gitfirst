@@ -67,14 +67,20 @@ window.onload=function(){
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmg7mTKTFUTfyD39A6slkZxzEzeV8eOZM&callback=initMap">
     </script>
       <script>
-      function initMap() {
+      	mui.init();
      
-          ckmap("none");
-         
+      //console.log(lat+lng);
+      function initMap() {
+      var self = plus.webview.currentWebview();
+      var lat = parseFloat(self.lat);
+      var lng = parseFloat(self.lng);
+          ckmap("none",lat,lng);
+        console.log(lat+","+lng) ;
       }
       
-      function ckmap(address){
-      	var uluru = {lat: 22.3052572, lng: 114.1793327};
+      function ckmap(address,lat,lng){
+      	
+      	var uluru = {lat: lat, lng: lng};
         
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 20,
