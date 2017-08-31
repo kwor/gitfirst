@@ -136,7 +136,7 @@ mui.getJSON('http://whois8.cn/getmenu.php',{shopid:shopid},function(data){
 	         
 		       mui.each(data,function(index,item){
     console.log(item[0]);
-                    list.innerHTML +=   '<div class="restaurant_nearby" id="'+index+'">'+
+                    list.innerHTML +=   '<div class="restaurant_nearby" id="'+item[1]+'">'+
 	                					'<div class="nearby_logo">'+
 										'<img src="./video_shots/'+item[3]+'" /></div>'+
 										'<div class="nearby_info">'+
@@ -154,7 +154,8 @@ mui.getJSON('http://whois8.cn/getmenu.php',{shopid:shopid},function(data){
                   url: 'friend_videos.html',
                   id: 'friend_videos',
                   extras:{
-                    shopid:shopid
+                    shopid:shopid,
+                    shopname:id
                   }  
                 });
   

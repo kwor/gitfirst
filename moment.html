@@ -32,7 +32,9 @@
           	
           	#OA_task_1,#OA_task_2{margin-top: 1vh;}
           	#item1mobile,#item2mobile{min-height: 1000px;}
-          	.moment_content_templete_nearby{display: none;}
+          	.moment_content_templete_nearby, .moment_content_templete_nearby_2{display: none;}
+          	.video_img{height: 50vh;}
+          	.moment_video{height: 50vh;}
 		</style>
 </head>
 <body>
@@ -126,7 +128,7 @@
 					                    '<img src="img/pic/more_icon.png" class="more_icon" /></div>'+
                                         '<div class="moment_video">'+
                                         '<img class="video_img" src="./video_shots/'+item[7]+'" data-id="'+index+'"/><video id="video_'+index+'" src="./videos/'+item[4]+'">播放器</video></div>'+
-                                        '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">All day breakfast</span></div>'+
+                                        '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">'+item[8]+'</span></div>'+
                                         '<div class="moment_share_comment"><div class="moment_share" id="'+item[5]+'"><img src="img/icon/share_black.png" />'+
 					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment"  id="'+item[5]+'">'+
 					                    '<img src="img/icon/comment_num.png" /><span class="share_num">'+item[6]+'</span></div></div></div>';
@@ -219,20 +221,74 @@
 	         
 		       mui.each(data,function(index,item){
     
-                    list2.innerHTML +=  '<div class="moment_content_templete following"><div class="moment_content_templete_top">'+
-                                        '<img src="img/icon/16574553a435563.png" class="moment_user_headImg" /><div class="monent_user_name">'+
+                    list2.innerHTML +=   '<div class="moment_content_templete_nearby_2" id="2_'+index+'"><div class="moment_content_templete_top">'+
+                                        '<img src="img/icon/user_headImg.png" class="moment_user_headImg" /><div class="monent_user_name">'+
                                         '<span class="moment_user_name">'+item[0]+'</span>'+
 					                    '<span class="moment_post_time">'+item[1]+'</span></div>'+
 					                    '<img src="img/pic/more_icon.png" class="more_icon" /></div>'+
-                                        '<div class="monent_video">'+
-                                        '<img class="video_img" src="http://whois8.cn/'+item[7]+'" data-id="'+index+'"/><video id="video_'+index+'" src="http://whois8.cn/files/'+item[4]+'">播放器</video></div>'+
-                                        '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">All day breakfast</span></div>'+
-                                        '<div class="moment_share_comment"><div class="moment_share"><img src="img/icon/share_black.png" />'+
-					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment">'+
-					                    '<img src="img/icon/comment_num.png" /><span class="share_num">425</span></div></div></div>';
-                })
-		      
+                                        '<div class="moment_video">'+
+                                        '<img class="video_img" src="./video_shots/'+item[7]+'" data-id="2_'+index+'"/><video id="video2_'+index+'" src="./videos/'+item[4]+'">播放器</video></div>'+
+                                        '<div class="moment_content"><span>'+item[3]+'</span><span class="moment_tag">'+item[8]+'</span></div>'+
+                                        '<div class="moment_share_comment"><div class="moment_share" id="2_'+item[5]+'"><img src="img/icon/share_black.png" />'+
+					                    '<span class="share_num">'+item[2]+'</span></div><div class="moment_comment"  id="2_'+item[5]+'">'+
+					                    '<img src="img/icon/comment_num.png" /><span class="share_num">'+item[6]+'</span></div></div></div>';
+               
+               		var moments = $(".moment_content_templete_nearby_2");
+               		moments.eq(0).css("display","block");
+ 
+               		moments.on("swipeup", function(){
+				    	var total_num=$(".moment_content_templete_nearby_2").length;
+				    	var _now=$(this).attr("id");
+				    	var now_arr=_now.split("_");
+				    	var now=now_arr[1];
+				    	if(now==total_num){now=0;}
+				    	$(this).fadeToggle(500);
+				    	
+				    	function show_next(){
+				    		$(".moment_content_templete_nearby_2").eq(now).css("display","block");
+				    	}
+				    	setTimeout(show_next,600);
+				    	console.log(now);
+				    });
+               		
+               		moments.on("swipedown", function(){
+				    	var total_num=$(".moment_content_templete_nearby_2").length;
+				    	var _now=$(this).attr("id");
+				    	var now_arr=_now.split("_");
+				    	var now=parseInt(now_arr[1])-2;
+				    	if(now<1){now=parseInt(total_num)-1;}
+				    	$(this).fadeToggle(500);
+				    	
+				    	function show_next(){
+				    		$(".moment_content_templete_nearby_2").eq(now).css("display","block");
+				    	}
+				    	setTimeout(show_next,600);
+				    	console.log(now);
+				    });
+               		
+               		var videos = $(".video_img");
+				    videos.on("tap", function(){
+				    	var obj = $(this);
+				    	//obj.hide();
+				    	var __id = $(this).data("id");
+				    	var id_arr=__id.split("_");
+				    	var _id=parseInt(id_arr[1]);
+				    	var video = document.getElementById("video2_"+_id);
+				    	video.style.display="block";
+				    	video.play();
+				    	video.addEventListener("ended",function(){
+				    		//console.log("finished");
+				    		video.style.display="none";
+				    		obj.show();
+				    	});
+				    	video.addEventListener("pause",function(){
+				    		//console.log("finished");
+				    		video.style.display="none";
+				    		obj.show();
+				    	});
+				    });
 	        });
+	   });
 	
 	var cmr = plus.camera.getCamera();
 	

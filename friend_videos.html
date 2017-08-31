@@ -48,6 +48,8 @@
 	document.getElementById("main").style.width=w+"px";
 	var self = plus.webview.currentWebview();
     var shopid = self.shopid;
+    var shopname = self.shopname;
+    $("#friend_video_title span").text(shopname);
 	
 			mui.getJSON('http://whois8.cn/getshopvideolist.php',{shopid:shopid},function(data){
 		       //数据绑定在此处

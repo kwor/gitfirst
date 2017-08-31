@@ -134,7 +134,7 @@
                     '<div class="like-info">'+
 					'<span class="restaurant_name" id="'+item[0]+'">'+item[1]+'</span><span class="restaurant_distance"><'+item[6]+'m</span>'+
 					'<span class="restaurant_type">'+item[2]+'</span></div>'+
-				    '<div class="dislike-info"><img src="img/icon/friends.png" class="friends_num" id="'+item[0]+'"/>'+
+				    '<div class="dislike-info"><img src="img/icon/friends.png" class="friends_num" data-name="'+item[1]+'" id="'+item[0]+'"/>'+
 					'<span class="friends_num"><a href="#">'+item[4]+'</a> 位好友</span></div>'+
 				    '<div style="clear: both;"></div>'+
 				    '<img src="img/icon/like.png" class="like-restaurant" id="'+item[0]+'"/>'+
@@ -210,12 +210,15 @@ mui("#main_page_restaurant").on('tap','.restaurant_name',function(){
 mui("#main_page_restaurant").on('tap','.friends_num',function(){
    //获取id
   var id = this.getAttribute("id");
+  var name = $(this).data("name");
+  //console.log(name);
  // console.log(id);
                 mui.openWindow({
                   url: 'friend_videos.html',
                   id: 'friend_videos',
                   extras:{
-                    shopid:id
+                    shopid:id,
+                    shopname:name
                   }  
                 });
   
